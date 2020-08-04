@@ -12,16 +12,17 @@ namespace LibraryMVC.Core.Models
     {
         [StringLength(30)]
         [DisplayName("Book Title")]
-        public String title { get; set; }
-        public String writerFirstName { get; set; }
-        public String writerLastName { get; set; }
-        public DateTime releaseDate { get; set; }
-        public String publisher { get; set; }
-        public int numberOfBooks { get; set; }
-        public String genre { get; set; }
-        public List<Format> formats { get; set; }
-        public String description { get; set; }
-        public static int count { get; set; }
+        public String Title { get; set; }
+        public String WriterFirstName { get; set; }
+        public String WriterLastName { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public String Publisher { get; set; }
+        public int NumberOfBooks { get; set; }
+        public String Genre { get; set; }
+        public List<Format> Formats { get; set; }
+        public String Description { get; set; }
+        public String Image { get; set; }
+        public static int Count { get; set; }
 
         public Book()
         {
