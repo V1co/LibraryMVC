@@ -1,4 +1,4 @@
-﻿@model LibraryMVC.Core.Models.Book
+﻿@model LibraryMVC.Core.ViewModels.BookManagerViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -6,101 +6,105 @@
 
 
 }
+<div class="container" style="margin-top:30px; margin-bottom:100px;">
+    <h2>Book Creator</h2>
 
-<h2>Create</h2>
+    @using (Html.BeginForm())
+    {
 
+        @Html.AntiForgeryToken()
+        <div class="container" style="margin-top:30px; margin-bottom:30px;">
+            <div class="form-horizontal">
+                <hr style="max-width:500px;" />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.Title, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.EditorFor(model => model.Book.Title, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        @Html.ValidationMessageFor(model => model.Book.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-<div class="container">
-    <div class="form-horizontal">
-        <h4>Book</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.WriterFirstName, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.EditorFor(model => model.Book.WriterFirstName, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        @Html.ValidationMessageFor(model => model.Book.WriterFirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.WriterLastName, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.EditorFor(model => model.Book.WriterLastName, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        @Html.ValidationMessageFor(model => model.Book.WriterLastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.EditorFor(model => model.Book.ReleaseDate, new { htmlAttributes = new { @class = "form-control text-center", type = "date" } })
+                        @Html.ValidationMessageFor(model => model.Book.ReleaseDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.Publisher, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.EditorFor(model => model.Book.Publisher, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        @Html.ValidationMessageFor(model => model.Book.Publisher, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.NumberOfBooks, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.EditorFor(model => model.Book.NumberOfBooks, new { htmlAttributes = new { @class = "form-control text-center", min = "0" } })
+                        @Html.ValidationMessageFor(model => model.Book.NumberOfBooks, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.Genre, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.DropDownListFor(model => model.Book.Genre, new SelectList(Model.Genres, "Genre", "Genre"), new { htmlAttributes = new { @class = "form-control text-center" } })
+                    </div>
+                </div>
+
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.Format, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.DropDownListFor(model => model.Book.Format, new SelectList(Model.Formats, "Format", "Format"), new { htmlAttributes = new { @class = "form-control text-center" } })
+                    </div>
+                </div>
+
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.EditorFor(model => model.Book.Description, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        @Html.ValidationMessageFor(model => model.Book.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(model => model.Book.Image, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        @Html.EditorFor(model => model.Book.Image, new { htmlAttributes = new { @class = "form-control text-center" } })
+                        @Html.ValidationMessageFor(model => model.Book.Image, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        @Html.ActionLink("Back to List", "Index", "BookManager", null, new { @class = "btn btn-info" })
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.WriterFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.WriterFirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.WriterFirstName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.WriterLastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.WriterLastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.WriterLastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Publisher, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Publisher, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Publisher, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfBooks, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfBooks, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfBooks, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Genre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Genre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-</div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    }
 </div>
 
 @section Scripts {

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<LibraryMVC.Core.Models.BookGenre>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container" style="margin-top:30px; margin-bottom:30px;">
+        <h2>Genre Manager</h2>
+        <hr style="max-width:500px;" />
+
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-12 d-flex justify-content-center justify-content-md-start">
+                    @Html.ActionLink("Create New Genre", "Create", "BookGenreManager", null, new { @style = "font-size: 20px; margin-bottom: 10px;" })
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Genre)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Genre)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+
+            </table>
+        </div>
+    </div>

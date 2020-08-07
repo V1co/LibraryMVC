@@ -170,6 +170,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookFormatManagerController.cs" />
+    <Compile Include="Controllers\BookGenreManagerController.cs" />
     <Compile Include="Controllers\BookManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -346,6 +348,14 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\BookManager\Create.cshtml" />
+    <Content Include="Views\BookFormatManager\Index.cshtml" />
+    <Content Include="Views\BookFormatManager\Create.cshtml" />
+    <Content Include="Views\BookFormatManager\Edit.cshtml" />
+    <Content Include="Views\BookFormatManager\Delete.cshtml" />
+    <Content Include="Views\BookGenreManager\Index.cshtml" />
+    <Content Include="Views\BookGenreManager\Create.cshtml" />
+    <Content Include="Views\BookGenreManager\Edit.cshtml" />
+    <Content Include="Views\BookGenreManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

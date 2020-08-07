@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using LibraryMVC.Core;
 using LibraryMVC.Core.Models;
+using LibraryMVC.Core.ViewModels;
 using LibraryMVC.DataAccess.InMemory;
 
 namespace LibraryMVC.WebUI.Controllers
@@ -14,10 +15,14 @@ namespace LibraryMVC.WebUI.Controllers
         // GET: BookManager
 
         BookRepository context;
+        BookFormatRepository bookFormats;
+        BookGenreRepository bookGenres;
 
         public BookManagerController()
         {
             context = new BookRepository();
+            bookFormats = new BookFormatRepository();
+            bookGenres = new BookGenreRepository();
         }
         public ActionResult Index()
         {
@@ -27,8 +32,12 @@ namespace LibraryMVC.WebUI.Controllers
 
         public ActionResult Create()
         {
-            Book book = new Book();
-            return View(book);
+            BookManagerViewModel viewModel = new BookManagerViewModel();
+            viewModel.Book = new Book();
+            viewModel.Formats = bookFormats.Collection();
+            viewModel.Genres = bookGenres.Collection(); 
+            
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -57,7 +66,11 @@ namespace LibraryMVC.WebUI.Controllers
             }
             else
             {
-                return View(book);
+                BookManagerViewModel viewModel = new BookManagerViewModel();
+                viewModel.Book = book;
+                viewModel.Formats = bookFormats.Collection();
+                viewModel.Genres = bookGenres.Collection();
+                return View(viewModel);
             }
         }
 
@@ -83,7 +96,7 @@ namespace LibraryMVC.WebUI.Controllers
                 bookToEdit.Publisher = book.Publisher;
                 bookToEdit.NumberOfBooks = book.NumberOfBooks;
                 bookToEdit.Genre = book.Genre;
-                bookToEdit.Formats = book.Formats;
+                bookToEdit.Format = book.Format;
                 bookToEdit.Description = book.Description;
                 bookToEdit.Image = book.Image;
 
