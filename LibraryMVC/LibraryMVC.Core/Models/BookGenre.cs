@@ -12,9 +12,5 @@ namespace LibraryMVC.Core.Models
         //[DisplayName("Genre Name")]
         public String Genre { get; set; }
 
-        public BookGenre()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
     }
 }

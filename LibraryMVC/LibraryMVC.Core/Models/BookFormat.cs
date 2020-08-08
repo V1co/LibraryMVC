@@ -12,9 +12,5 @@ namespace LibraryMVC.Core.Models
         //[DisplayName("Format Name")]
         public String Format { get; set; }
 
-        public BookFormat()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
     }
 }

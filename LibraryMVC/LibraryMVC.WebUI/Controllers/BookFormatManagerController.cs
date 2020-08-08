@@ -11,11 +11,11 @@ namespace LibraryMVC.WebUI.Controllers
     public class BookFormatManagerController : Controller
     {
         // GET: BookFormatManager
-        BookFormatRepository context;
+        InMemoryRepository<BookFormat> context;
 
         public BookFormatManagerController()
         {
-            context = new BookFormatRepository();
+            context = new InMemoryRepository<BookFormat>();
         }
         public ActionResult Index()
         {

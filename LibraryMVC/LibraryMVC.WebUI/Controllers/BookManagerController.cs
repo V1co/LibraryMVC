@@ -14,15 +14,15 @@ namespace LibraryMVC.WebUI.Controllers
     {
         // GET: BookManager
 
-        BookRepository context;
-        BookFormatRepository bookFormats;
-        BookGenreRepository bookGenres;
+        InMemoryRepository<Book> context;
+        InMemoryRepository<BookFormat> bookFormats;
+        InMemoryRepository<BookGenre> bookGenres;
 
         public BookManagerController()
         {
-            context = new BookRepository();
-            bookFormats = new BookFormatRepository();
-            bookGenres = new BookGenreRepository();
+            context = new InMemoryRepository<Book>();
+            bookFormats = new InMemoryRepository<BookFormat>();
+            bookGenres = new InMemoryRepository<BookGenre>();
         }
         public ActionResult Index()
         {

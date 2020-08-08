@@ -11,11 +11,11 @@ namespace LibraryMVC.WebUI.Controllers
     public class BookGenreManagerController : Controller
     {
         // GET: BookGenreManager
-        BookGenreRepository context;
+        InMemoryRepository<BookGenre> context;
 
         public BookGenreManagerController()
         {
-            context = new BookGenreRepository();
+            context = new InMemoryRepository<BookGenre>();
         }
         public ActionResult Index()
         {

@@ -29,9 +29,5 @@ namespace LibraryMVC.Core.Models
         public String Image { get; set; }
         public static int Count { get; set; }
 
-        public Book()
-        {
-
-        }
     }
 }
