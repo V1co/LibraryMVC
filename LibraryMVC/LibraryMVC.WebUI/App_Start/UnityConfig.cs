@@ -1,6 +1,7 @@
 using LibraryMVC.Core.Contracts;
 using LibraryMVC.Core.Models;
 using LibraryMVC.DataAccess.InMemory;
+using LibraryMVC.DataAccess.SQL;
 using System;
 
 using Unity;
@@ -45,9 +46,9 @@ namespace LibraryMVC.WebUI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IRepository<Book>, InMemoryRepository<Book>>();
-            container.RegisterType<IRepository<BookFormat>, InMemoryRepository<BookFormat>>();
-            container.RegisterType<IRepository<BookGenre>, InMemoryRepository<BookGenre>>();
+            container.RegisterType<IRepository<Book>, SQLRepository<Book>>();
+            container.RegisterType<IRepository<BookFormat>, SQLRepository<BookFormat>>();
+            container.RegisterType<IRepository<BookGenre>, SQLRepository<BookGenre>>();
             // container.RegisterType<INTERFACE HERE,  IMPLEMENTATION HERE();
         }
     }
