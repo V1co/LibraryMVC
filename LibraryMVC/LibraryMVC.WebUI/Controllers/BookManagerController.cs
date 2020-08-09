@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LibraryMVC.Core;
+using LibraryMVC.Core.Contracts;
 using LibraryMVC.Core.Models;
 using LibraryMVC.Core.ViewModels;
 using LibraryMVC.DataAccess.InMemory;
@@ -14,15 +15,15 @@ namespace LibraryMVC.WebUI.Controllers
     {
         // GET: BookManager
 
-        InMemoryRepository<Book> context;
-        InMemoryRepository<BookFormat> bookFormats;
-        InMemoryRepository<BookGenre> bookGenres;
+        IRepository<Book> context;
+        IRepository<BookFormat> bookFormats;
+        IRepository<BookGenre> bookGenres;
 
-        public BookManagerController()
+        public BookManagerController(IRepository<Book> Context, IRepository<BookFormat> BookFormats, IRepository<BookGenre> BookGenres)
         {
-            context = new InMemoryRepository<Book>();
-            bookFormats = new InMemoryRepository<BookFormat>();
-            bookGenres = new InMemoryRepository<BookGenre>();
+            context = Context;
+            bookFormats = BookFormats;
+            bookGenres = BookGenres;
         }
         public ActionResult Index()
         {

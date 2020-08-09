@@ -1,4 +1,5 @@
-﻿using LibraryMVC.Core.Models;
+﻿using LibraryMVC.Core.Contracts;
+using LibraryMVC.Core.Models;
 using LibraryMVC.DataAccess.InMemory;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,11 @@ namespace LibraryMVC.WebUI.Controllers
     public class BookFormatManagerController : Controller
     {
         // GET: BookFormatManager
-        InMemoryRepository<BookFormat> context;
+        IRepository<BookFormat> context;
 
-        public BookFormatManagerController()
+        public BookFormatManagerController(IRepository<BookFormat> Context)
         {
-            context = new InMemoryRepository<BookFormat>();
+            context = Context;
         }
         public ActionResult Index()
         {

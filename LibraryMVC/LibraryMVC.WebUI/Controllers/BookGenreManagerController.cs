@@ -1,4 +1,5 @@
-﻿using LibraryMVC.Core.Models;
+﻿using LibraryMVC.Core.Contracts;
+using LibraryMVC.Core.Models;
 using LibraryMVC.DataAccess.InMemory;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,11 @@ namespace LibraryMVC.WebUI.Controllers
     public class BookGenreManagerController : Controller
     {
         // GET: BookGenreManager
-        InMemoryRepository<BookGenre> context;
+        IRepository<BookGenre> context;
 
-        public BookGenreManagerController()
+        public BookGenreManagerController(IRepository<BookGenre> BookGenres)
         {
-            context = new InMemoryRepository<BookGenre>();
+            context = BookGenres;
         }
         public ActionResult Index()
         {
