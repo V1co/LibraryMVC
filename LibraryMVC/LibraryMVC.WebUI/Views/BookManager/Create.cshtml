@@ -9,7 +9,7 @@
 <div class="container" style="margin-top:30px; margin-bottom:100px;">
     <h2>Book Creator</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "BookManager", FormMethod.Post, new { encType = "multipart/form-data" }))
     {
 
         @Html.AntiForgeryToken()
@@ -90,8 +90,7 @@
                 <div class="form-group text-center font-weight-bold" style="font-size: 18px">
                     @Html.LabelFor(model => model.Book.Image, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-xl-4 col-lg-4 col-md-8 col-sm-10 mx-auto">
-                        @Html.EditorFor(model => model.Book.Image, new { htmlAttributes = new { @class = "form-control text-center" } })
-                        @Html.ValidationMessageFor(model => model.Book.Image, "", new { @class = "text-danger" })
+                        <input type="file" id="file" name="file" class="form-control" style="height: 44px" />
                     </div>
                 </div>
 

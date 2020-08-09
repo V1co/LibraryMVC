@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -42,7 +43,7 @@ namespace LibraryMVC.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Book book)
+        public ActionResult Create(Book book, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
@@ -50,6 +51,13 @@ namespace LibraryMVC.WebUI.Controllers
             }
             else
             {
+
+                if (file != null)
+                {
+                    book.Image = book.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//BookImages//") + book.Image);
+                }
+
                 context.Insert(book);
                 context.Commit();
 
@@ -76,7 +84,7 @@ namespace LibraryMVC.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Book book, string Id)
+        public ActionResult Edit(Book book, string Id, HttpPostedFileBase file)
         {
             Book bookToEdit = context.Find(Id);
             if (book == null)
@@ -90,6 +98,12 @@ namespace LibraryMVC.WebUI.Controllers
                     return View(book);
                 }
 
+                if (file != null)
+                {
+                    bookToEdit.Image = book.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//BookImages//") + bookToEdit.Image);
+                }
+
                 bookToEdit.Title = book.Title;
                 bookToEdit.WriterFirstName = book.WriterFirstName;
                 bookToEdit.WriterLastName = book.WriterLastName;
@@ -99,7 +113,6 @@ namespace LibraryMVC.WebUI.Controllers
                 bookToEdit.Genre = book.Genre;
                 bookToEdit.Format = book.Format;
                 bookToEdit.Description = book.Description;
-                bookToEdit.Image = book.Image;
 
                 context.Commit();
 
