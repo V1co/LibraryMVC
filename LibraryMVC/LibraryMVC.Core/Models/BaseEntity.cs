@@ -8,8 +8,8 @@ namespace LibraryMVC.Core.Models
 {
     public abstract class BaseEntity
     {
-        public string Id;
-        public DateTimeOffset CreatedAt;
+        public string Id { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
 
         public BaseEntity()
         {
