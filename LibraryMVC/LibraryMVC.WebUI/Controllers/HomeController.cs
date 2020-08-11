@@ -1,5 +1,6 @@
 ﻿using LibraryMVC.Core.Contracts;
 using LibraryMVC.Core.Models;
+using LibraryMVC.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,50 @@ namespace LibraryMVC.WebUI.Controllers
             bookGenres = BookGenres;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(/*string Genre = null, string Format = null*/)
         {
             List<Book> books = context.Collection().ToList();
+            //List<BookGenre> genres = bookGenres.Collection().ToList();
+            //List<BookFormat> formats = bookFormats.Collection().ToList();
+
+            //if (Genre == null)
+            //{
+            //    books = context.Collection().ToList();
+            //}
+            //else
+            //{
+            //    books = context.Collection().Where(b => b.Genre == Genre).ToList();
+            //}
+
+            //if (Format == null)
+            //{
+            //    books = context.Collection().ToList();
+            //}
+            //else
+            //{
+            //    books = context.Collection().Where(b => b.Format == Format).ToList();
+            //}
+
+            //BookListViewModel model = new BookListViewModel();
+            //model.Books = books;
+            //model.BookFormats = formats;
+            //model.BookGenres = genres;
+
             return View(books);
+        }
+
+        public ActionResult Details(string Id)
+        {
+            Book book = context.Find(Id);
+
+            if (book != null)
+            {
+                return View(book);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         public ActionResult About()

@@ -54,6 +54,7 @@
     <Compile Include="Models\BookFormat.cs" />
     <Compile Include="Models\BookGenre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BookListViewModel.cs" />
     <Compile Include="ViewModels\BookManagerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
