@@ -193,6 +193,7 @@
     <Compile Include="Controllers\BookFormatManagerController.cs" />
     <Compile Include="Controllers\BookGenreManagerController.cs" />
     <Compile Include="Controllers\BookManagerController.cs" />
+    <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -377,6 +378,7 @@
     <Content Include="Views\BookGenreManager\Edit.cshtml" />
     <Content Include="Views\BookGenreManager\Delete.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Genres\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,73 @@
+﻿@model LibraryMVC.Core.ViewModels.BookListViewModel
+
+@{
+    ViewBag.Title = "Genres";
+}
+
+    <div class="container" style="padding-bottom:30px; display: flex; margin: 0px; font-size: 20px; padding-top: 30px; max-width:100%">
+
+        <div class="col-md-2">
+            <h4>Filter by Genre:</h4>
+            <div class="list-group">
+                @foreach (var c in Model.BookGenres)
+                {
+                    @Html.ActionLink(c.Genre, "Index", new { Genre = c.Genre }, new { @class = Request["Genre"] == c.Genre ? "list-group-item active" : "list-group-item" })
+                }
+            </div>
+        </div>
+        <div class="row" style="width: 100%; margin-left: 30px">
+            @foreach (var item in Model.Books)
+            {
+                <div class="col-md-3" style="margin-top: 10px; margin-bottom: 10px">
+                    <div clas="col-md-12">
+                        <img src="~/Content/BookImages/@item.Image" class="img-thumbnail" style="height: 400px; width: 250px;" />
+                    </div>
+                    <div class="col-md-12">
+                        <strong>@Html.ActionLink(item.Title, "Details", "Home", new { id = item.Id }, null)</strong>
+                    </div>
+                    <div class="col-md-12">
+                        @item.WriterFirstName
+                    </div>
+                    <div class="col-md-12">
+                        @item.WriterLastName
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+
+@*<div class="container" style="padding-bottom:30px; display: flex; margin: 0px; font-size: 20px; padding-top: 30px; max-width:100%">
+
+        <div class="col-md-2">
+            <h4>Filter by Genre:</h4>
+            <div class="list-group">
+                @foreach (var c in Model.BookGenres)
+                {
+                    @Html.ActionLink(c.Genre, "Index", new { Genre = c.Genre }, new { @class = Request["Genre"] == c.Genre ? "list-group-item active" : "list-group-item" })
+                }
+            </div>
+        </div>
+        <div class="row" style="">
+            @foreach (var item in Model.Books)
+            {
+                <div class="col-md-3" style="margin-top: 10px; margin-bottom: 10px">
+                    <div clas="col-md-12">
+                        <img src="~/Content/BookImages/@item.Image" class="img-thumbnail" style="height: 400px; width: 250px;"/>
+                    </div>
+                    <div class="col-md-12">
+                        <strong>@Html.ActionLink(item.Title, "Details", new { id = item.Id }, new { })</strong>
+                        @Html.ActionLink(item.Title, "Index", new { }, new { })
+                        <strong>@Html.ActionLink(item.Title, "Details", "Home", new { id = item.Id }, null)</strong>
+                    </div>
+                    <div class="col-md-12">
+                        @item.WriterFirstName
+                    </div>
+                    <div class="col-md-12">
+                        @item.WriterLastName
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>*@

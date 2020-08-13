@@ -23,20 +23,20 @@ namespace LibraryMVC.WebUI.Controllers
             bookGenres = BookGenres;
         }
 
-        public ActionResult Index(/*string Genre = null, string Format = null*/)
+        public ActionResult Index(string Genre = null)
         {
-            List<Book> books = context.Collection().ToList();
-            //List<BookGenre> genres = bookGenres.Collection().ToList();
-            //List<BookFormat> formats = bookFormats.Collection().ToList();
+            List<Book> books;
+            List<BookGenre> genres = bookGenres.Collection().ToList();
+            List<BookFormat> formats = bookFormats.Collection().ToList();
 
-            //if (Genre == null)
-            //{
-            //    books = context.Collection().ToList();
-            //}
-            //else
-            //{
-            //    books = context.Collection().Where(b => b.Genre == Genre).ToList();
-            //}
+            if (Genre == null)
+            {
+                books = context.Collection().ToList();
+            }
+            else
+            {
+                books = context.Collection().Where(b => b.Genre == Genre).ToList();
+            }
 
             //if (Format == null)
             //{
@@ -47,12 +47,12 @@ namespace LibraryMVC.WebUI.Controllers
             //    books = context.Collection().Where(b => b.Format == Format).ToList();
             //}
 
-            //BookListViewModel model = new BookListViewModel();
-            //model.Books = books;
+            BookListViewModel model = new BookListViewModel();
+            model.Books = books;
+            model.BookGenres = genres;
             //model.BookFormats = formats;
-            //model.BookGenres = genres;
 
-            return View(books);
+            return View(model);
         }
 
         public ActionResult Details(string Id)
