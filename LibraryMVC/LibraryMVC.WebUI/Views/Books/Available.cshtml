@@ -1,0 +1,35 @@
+﻿@model LibraryMVC.Core.ViewModels.BookListViewModel
+@{
+    ViewBag.Title = "Available Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top: 30px">Available books</h2>
+<hr style="max-width:500px;" />
+<div class="container" style="padding-bottom:30px; display: flex; margin: 0px; font-size: 20px; padding-top: 30px; max-width:100%;">
+
+    <div class="row" style="width: 100%; margin-left: 80px;">
+        @{
+            List<LibraryMVC.Core.Models.Book> availableBooks = Model.Books.Where(a => a.NumberOfBooks > 0).ToList();
+        }
+        @foreach(var item in availableBooks)
+        {
+            <div class="col-md-3" style="margin-top: 10px; margin-bottom: 10px;">
+                <div clas="col-md-12">
+                    <img src="~/Content/BookImages/@item.Image" class="img-thumbnail" style="height: 400px; width: 250px;" />
+                </div>
+                <div class="col-md-12">
+                    <strong>@Html.ActionLink(item.Title, "Details", "Home", new { id = item.Id }, null)</strong>
+                </div>
+                <div class="col-md-12">
+                    @item.WriterFirstName
+                </div>
+                <div class="col-md-12">
+                    @item.WriterLastName
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+

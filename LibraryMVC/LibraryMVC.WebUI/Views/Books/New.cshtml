@@ -1,0 +1,35 @@
+﻿@model LibraryMVC.Core.ViewModels.BookListViewModel
+@{
+    ViewBag.Title = "New Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top: 30px">New in Library</h2>
+<hr style="max-width:500px;" />
+<div class="container" style="padding-bottom:30px; display: flex; margin: 0px; font-size: 20px; padding-top: 30px; max-width:100%;">
+
+    <div class="row" style="width: 100%; margin-left: 80px;">
+        @{
+            List<LibraryMVC.Core.Models.Book> newBooks = Model.Books.OrderByDescending(a => a.CreatedAt).ThenBy(a => a.Id).ToList();
+        }
+        @for (int i = 0; i < 8; i++)
+        {
+            <div class="col-md-3" style="margin-top: 10px; margin-bottom: 10px;">
+                <div clas="col-md-12">
+                    <img src="~/Content/BookImages/@newBooks[i].Image" class="img-thumbnail" style="height: 400px; width: 250px;" />
+                </div>
+                <div class="col-md-12">
+                    <strong>@Html.ActionLink(newBooks[i].Title, "Details", "Home", new { id = newBooks[i].Id }, null)</strong>
+                </div>
+                <div class="col-md-12">
+                    @newBooks[i].WriterFirstName
+                </div>
+                <div class="col-md-12">
+                    @newBooks[i].WriterLastName
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
