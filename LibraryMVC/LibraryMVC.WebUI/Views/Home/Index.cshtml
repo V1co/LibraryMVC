@@ -4,125 +4,119 @@
     ViewBag.Title = "Home Page";
 }
 
-<div style="margin-top:30px; margin-bottom:30px; font-size: 20px;">
-<h2 style="font-size:48px">Welcome to Library</h2>
-<hr style="max-width:500px; justify-content: center;" />
-<div class="col-md-12 row">
-
-    <div class="col-md-2" style="margin-left: 60px">
-        <h4>Filter by Genre:</h4>
-        <div class="list-group">
-            @foreach (var c in Model.BookGenres)
-            {
-                @*@Html.ActionLink(c.Genre, "Index", new { Genre = c.Genre }, new { @class = Request["Genre"] == c.Genre ? "list-group-item active" : "list-group-item" })*@
-                @Html.ActionLink(c.Genre, "Index", "Genres", new { Genre = c.Genre }, new { @class = Request["Genre"] == c.Genre ? "list-group-item active" : "list-group-item" })
-            }
-        </div>
-    </div>
-
-    @*<div class="col-md-8">
-        @foreach (var item in Model.Books)
-        {
-            <div class="col-md-4" style="height:450px; padding:10px; margin:10px;">
-                <div class="col-md-12">
-                    <strong>@Html.ActionLink(item.Title, "Details", new { id = item.Id })</strong>
+    
+    @*<div class="col-md-12 row">*@
+    <div style="margin-top:30px; margin-bottom:30px; font-size: 20px;">
+        <h2 class="col-md-12" style="font-size:48px">Welcome to Library</h2>
+        <hr class="col-md-12" style="max-width:500px;" />
+        <div class="row">
+            <div class="col-md-2" @*style="margin-left: 60px"*@>
+                <h4>Filter by Genre:</h4>
+                <div class="list-group">
+                    @foreach (var c in Model.BookGenres)
+                    {
+                        @*@Html.ActionLink(c.Genre, "Index", new { Genre = c.Genre }, new { @class = Request["Genre"] == c.Genre ? "list-group-item active" : "list-group-item" })*@
+                        @Html.ActionLink(c.Genre, "Index", "Genres", new { Genre = c.Genre }, new { @class = Request["Genre"] == c.Genre ? "list-group-item active" : "list-group-item" })
+                    }
                 </div>
-                <div class="col-md-12">
-                    @Html.ActionLink(item.WriterFirstName, "Details", new { id = item.Id })
-                </div>
-                <div class="col-md-12">
-                    @Html.ActionLink(item.WriterLastName, "Details", new { id = item.Id })
-                </div>
-
             </div>
-        }
-        </div>*@
+            <div class="col-md-1"></div>
 
-    <div class="container col-md-2 col-lg-2">
-        <h3>New Books:</h3>
-        <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                @{
-                    var first = true;
-                    List<LibraryMVC.Core.Models.Book> allBooks = Model.Books.OrderByDescending(a => a.CreatedAt).ThenBy(a => a.Id).ToList();
-                }
-                @for (int i = 0; i < 5; i++)
-                {
-                    <div class="carousel-item @(first ? Html.Raw("active") : Html.Raw(""))">
-                        <div class="row">
-                            <div class="col-sm">
-                                <img class="d-block w-100" src="~/Content/BookImages/@allBooks[i].Image" alt="@allBooks[i].Title">
+            @*<div class="col-md-8">
+            @foreach (var item in Model.Books)
+            {
+                <div class="col-md-4" style="height:450px; padding:10px; margin:10px;">
+                    <div class="col-md-12">
+                        <strong>@Html.ActionLink(item.Title, "Details", new { id = item.Id })</strong>
+                    </div>
+                    <div class="col-md-12">
+                        @Html.ActionLink(item.WriterFirstName, "Details", new { id = item.Id })
+                    </div>
+                    <div class="col-md-12">
+                        @Html.ActionLink(item.WriterLastName, "Details", new { id = item.Id })
+                    </div>
+
+                </div>
+            }
+            </div>*@
+
+
+
+
+            <div class="col-md-4">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-height: 400px; max-width: 250px">
+                    <div class="carousel-inner">
+                        @{
+                            var first = true;
+                            List<LibraryMVC.Core.Models.Book> allBooks = Model.Books.OrderByDescending(a => a.CreatedAt).ThenBy(a => a.Id).ToList();
+                        }
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            <div class="carousel-item @(first ? Html.Raw("active") : Html.Raw(""))">
+                                <img class="d-block w-100 h-100" src="~/Content/BookImages/@allBooks[i].Image" alt="@allBooks[i].Title" style="width: 100%; height: 400px !important;">
                                 <strong>@Html.ActionLink(@allBooks[i].Title, "Details", new { Id = @allBooks[i].Id })</strong>
                             </div>
-                        </div>
+                            first = false;
+                        }
+
                     </div>
-                    first = false;
-                }
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls1" role="button"
-               data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls1" role="button"
-               data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
 
-    @*Recommends is based on random, non repeatable logic*@
-    <div class="container col-md-2 col-lg-2">
-        <h3>Recommended:</h3>
-        <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                @{
-                    List<LibraryMVC.Core.Models.Book> recommendedBooks = Model.Books.ToList();
-                    Random random = new Random();
-                    var r = random.Next(recommendedBooks.Count);
-                    var second = true;
+            @*Recommends is based on random, non repeatable logic*@
+            @*<h3>Recommended:</h3>*@
+            <div class="col-md-3">
+                <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel" style="max-height: 400px; max-width: 250px">
+                    <div class="carousel-inner">
+                        @{
+                            List<LibraryMVC.Core.Models.Book> recommendedBooks = Model.Books.ToList();
+                            Random random = new Random();
+                            var r = random.Next(recommendedBooks.Count);
+                            var second = true;
 
-                    for (int i = 0; i < 8; i++)
-                    {
-                        <div class="carousel-item @(second ? Html.Raw("active") : Html.Raw(""))">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <img class="d-block w-100" src="~/Content/BookImages/@recommendedBooks[r].Image" alt="@recommendedBooks[r].Title">
+                            for (int i = 0; i < 8; i++)
+                            {
+                                <div class="carousel-item @(second ? Html.Raw("active") : Html.Raw(""))">
+                                    <img class="d-block w-100 h-100" src="~/Content/BookImages/@recommendedBooks[r].Image" alt="@recommendedBooks[r].Title" style="width: 100%; height: 400px !important;">
                                     <strong>@Html.ActionLink(@recommendedBooks[r].Title, "Details", new { Id = recommendedBooks[r].Id })</strong>
                                 </div>
-                            </div>
-                        </div>
-                            second = false;
-                    }
-                 }
+                                second = false;
+                            }
+                        }
+                    </div>
+
+                    <a class="carousel-control-prev" href="#carouselExampleControls2" role="button"
+                       data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls2" role="button"
+                       data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
+            </div>
 
-            <a class="carousel-control-prev" href="#carouselExampleControls2" role="button"
-               data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls2" role="button"
-               data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="col-md-2" @*style="margin-left: 60px"*@>
+                <h4>Filter by Format:</h4>
+                <div class="list-group">
+                    @foreach (var b in Model.BookFormats)
+                    {
+                        @Html.ActionLink(b.Format, "Index", "Formats", new { Format = b.Format }, new { @class = Request["Format"] == b.Format ? "list-group-item active" : "list-group-item" })
+                    }
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-2" style="margin-left: 60px">
-        <h4>Filter by Format:</h4>
-        <div class="list-group">
-            @foreach (var b in Model.BookFormats)
-            {
-                @*@Html.ActionLink(c.Genre, "Index", new { Genre = c.Genre }, new { @class = Request["Genre"] == c.Genre ? "list-group-item active" : "list-group-item" })*@
-                @Html.ActionLink(b.Format, "Index", "Formats", new { Format = b.Format }, new { @class = Request["Format"] == b.Format ? "list-group-item active" : "list-group-item" })
-            }
-        </div>
-    </div>
 
-</div>
-    </div>
-
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>

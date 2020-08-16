@@ -18,5 +18,6 @@ namespace LibraryMVC.DataAccess.SQL
         public DbSet<Book> Books { get; set; }
         public DbSet<BookGenre> Genres { get; set; }
         public DbSet<BookFormat> Formats { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }

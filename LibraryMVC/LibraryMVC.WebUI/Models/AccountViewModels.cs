@@ -78,6 +78,18 @@ namespace LibraryMVC.WebUI.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
+        public string Street { get; set; }
+        [Required]
+        public string City { get; set; }
+        public string County { get; set; }
+        [Required]
+        public string PostCode { get; set; }
         public string ConfirmPassword { get; set; }
     }
 

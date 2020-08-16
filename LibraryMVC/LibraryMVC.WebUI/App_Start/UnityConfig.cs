@@ -49,6 +49,7 @@ namespace LibraryMVC.WebUI
             container.RegisterType<IRepository<Book>, SQLRepository<Book>>();
             container.RegisterType<IRepository<BookFormat>, SQLRepository<BookFormat>>();
             container.RegisterType<IRepository<BookGenre>, SQLRepository<BookGenre>>();
+            container.RegisterType<IRepository<Customer>, SQLRepository<Customer>>();
             // container.RegisterType<INTERFACE HERE,  IMPLEMENTATION HERE();
         }
     }
