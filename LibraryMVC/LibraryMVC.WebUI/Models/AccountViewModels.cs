@@ -70,7 +70,7 @@ namespace LibraryMVC.WebUI.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -78,19 +78,30 @@ namespace LibraryMVC.WebUI.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
 
         [Required]
+        [Display(Name = "First Name")]
+        [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in First Name field")]
         public string FirstName { get; set; }
+        
         [Required]
+        [Display(Name = "Last Name")]
+        [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in Last Name field")]
         public string LastName { get; set; }
+        
         [Required]
+        [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in Street field")]
         public string Street { get; set; }
         [Required]
+        [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in City field")]
         public string City { get; set; }
+        [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in County field")]
         public string County { get; set; }
         [Required]
+        [Display(Name = "Post Code")]
+        [RegularExpression(@"[a-zA-Z]{2}[0-9]{2}[ ][0-9]{1}[a-zA-Z]{2}", ErrorMessage = "Provided Post Code is incorrect")]
         public string PostCode { get; set; }
-        public string ConfirmPassword { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -101,7 +112,7 @@ namespace LibraryMVC.WebUI.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

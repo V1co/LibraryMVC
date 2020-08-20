@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace LibraryMVC.Core.Models
 {
-    public class Customer : BaseEntity
+    public class Borrow : BaseEntity
     {
-        public string UserId { get; set; }
+        public Borrow()
+        {
+            this.BorrowBooks = new List<BorrowBook>();
+        }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -16,6 +19,7 @@ namespace LibraryMVC.Core.Models
         public string City { get; set; }
         public string County { get; set; }
         public string PostCode { get; set; }
-        //public List<Book> borrowedBooks { get; set; }
+        public string BorrowStatus { get; set; }
+        public virtual ICollection<BorrowBook> BorrowBooks { get; set; }
     }
 }

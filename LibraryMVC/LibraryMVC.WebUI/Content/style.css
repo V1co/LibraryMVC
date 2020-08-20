@@ -79,6 +79,9 @@ a.navbar-brand.mx-auto {
   background-color: #ddd;
   color: black;
 }
+.navbar a {
+	color: white;
+}
 
 nav .navbar.navbar-expand-md.navbar-dark {
 text-align: center;
@@ -97,11 +100,11 @@ text-align: center;
 	color: white;
 }
 
-.row {
-	margin-left: 30px;
-}
-
 .carousel {
 	max-height: 400px;
 	max-width: 250px
+}
+
+ul {
+	list-style-type: none;
 }

@@ -4,31 +4,31 @@
     ViewBag.Title = "Genres";
 }
 
-    <div class="container" style="padding-bottom:30px; display: flex; margin: 0px; font-size: 20px; padding-top: 30px; max-width:100%">
+    <div class="container" style="padding-bottom:60px; display: flex; margin: 0px; font-size: 20px; padding-top: 60px; max-width:100%">
 
-        <div class="col-md-2">
-            <h4>Filter by Genre:</h4>
-            <div class="list-group">
+        <div class="col-5 col-md-5 col-lg-4 col-xl-2" style="text-align: center;">
+            <h3>Filter by Genre:</h3>
+            <div class="list-group d-flex justify-content-center">
                 @foreach (var c in Model.BookGenres)
                 {
                     @Html.ActionLink(c.Genre, "Index", new { Genre = c.Genre }, new { @class = Request["Genre"] == c.Genre ? "list-group-item active" : "list-group-item" })
                 }
             </div>
         </div>
-        <div class="row" style="width: 100%; margin-left: 30px">
+        <div class="row" style="width: 100%; justify-content: center; margin-left: 0px">
             @foreach (var item in Model.Books)
             {
-                <div class="col-md-3" style="margin-top: 10px; margin-bottom: 10px">
-                    <div clas="col-md-12">
+                <div class="col-12 col-md-12 col-lg-6 col-xl-4 align-items-center" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="col-md-12 d-flex justify-content-center">
                         <img src="~/Content/BookImages/@item.Image" class="img-thumbnail" style="height: 400px; width: 250px;" />
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         <strong>@Html.ActionLink(item.Title, "Details", "Home", new { id = item.Id }, null)</strong>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         @item.WriterFirstName
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         @item.WriterLastName
                     </div>
 

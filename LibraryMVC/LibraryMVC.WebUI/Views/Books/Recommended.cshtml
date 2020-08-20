@@ -6,9 +6,8 @@
 
 <h2 style="margin-top: 30px">Library recommends</h2>
 <hr style="max-width:500px;" />
-<div class="container" style="padding-bottom:30px; display: flex; margin: 0px; font-size: 20px; padding-top: 30px; max-width:100%;">
-
-    <div class="row" style="width: 100%; margin-left: 80px;">
+<div class="container" style="padding-bottom:60px; display: flex; margin: 0px; font-size: 20px; padding-top: 10px; max-width:100%;">
+    <div class="row" style="width: 100%; justify-content: center; margin-left: 0px">
         @{
             List<LibraryMVC.Core.Models.Book> books = Model.Books.ToList();
             Random random = new Random();
@@ -16,26 +15,26 @@
 
             for (int i = 0; i < 8; i++)
             {
-                <div class="col-md-3" style="margin-top: 10px; margin-bottom: 10px;">
-                    <div clas="col-md-12">
+                <div class="col-12 col-md-6 col-lg-6 col-xl-3 align-items-center" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="col-md-12 d-flex justify-content-center">
                         <img src="~/Content/BookImages/@books[r].Image" class="img-thumbnail" style="height: 400px; width: 250px;" />
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         <strong>@Html.ActionLink(books[r].Title, "Details", "Home", new { id = books[r].Id }, null)</strong>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         @books[r].WriterFirstName
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         @books[r].WriterLastName
                     </div>
-                    
-                    </div>
+
+                </div>
                 r = random.Next(books.Count);
             }
         }
-                </div>
-            </div>
+    </div>
+</div>
 
 @*<div class="col-md-3 col-lg-3" style="margin-left: 60px">
     <h3>Recommended:</h3>

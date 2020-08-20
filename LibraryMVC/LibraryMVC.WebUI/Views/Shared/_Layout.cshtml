@@ -13,66 +13,68 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #333;text-align: center;">
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #333; text-align: center;">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
                         Books
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="@Url.Action("New", "Books")">New books</a>
-                        <a class="dropdown-item" href="@Url.Action("Recommended", "Books")">Recommended books</a>
-                        <a class="dropdown-item" href="@Url.Action("Available", "Books")">Available books</a>
-                        <a class="dropdown-item" href="@Url.Action("All", "Books")">All books</a>
+                        <a style="color: black" class="dropdown-item" href="@Url.Action("New", "Books")">New books</a>
+                        <a style="color: black" class="dropdown-item" href="@Url.Action("Recommended", "Books")">Recommended books</a>
+                        <a style="color: black" class="dropdown-item" href="@Url.Action("Available", "Books")">Available books</a>
+                        <a style="color: black" class="dropdown-item" href="@Url.Action("All", "Books")">All books</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <a class="dropdown-item" href="@Url.Action("Index", "Genres")">Genres</a>
-                        <a class="dropdown-item" href="@Url.Action("Index", "Formats")">Formats</a>
+                        <a style="color: black" class="dropdown-item" href="@Url.Action("Index", "Genres")">Genres</a>
+                        <a style="color: black" class="dropdown-item" href="@Url.Action("Index", "Formats")">Formats</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
-                </li>
+                @*<li class="nav-item">
+                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link", style = "color: white;" })
+                </li>*@
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
                         Admin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <a class="dropdown-item" href="@Url.Action("Index", "BookManager")">Manage Books</a>
-                        <a class="dropdown-item" href="@Url.Action("Index", "BookFormatManager")">Manage Formats</a>
-                        <a class="dropdown-item" href="@Url.Action("Index", "BookGenreManager")">Manage Genres</a>
+                        <a style="color: black" class="dropdown-item" href="@Url.Action("Index", "BookManager")">Manage Books</a>
+                        <a style="color: black" class="dropdown-item" href="@Url.Action("Index", "BookFormatManager")">Manage Formats</a>
+                        <a style="color: black" class="dropdown-item" href="@Url.Action("Index", "BookGenreManager")">Manage Genres</a>
                     </div>
                 </li>
             </ul>
         </div>
+
         <div class="mx-auto order-0">
             <a class="navbar-brand mx-auto" href="@Url.Action("Index", "Home")">LIBRARY</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav ml-auto">
 
                 <form class="form-inline d-none d-lg-block justify-content-center md-form form-sm mt-0" style="padding: 5px">
                     <i class="fas fa-search" aria-hidden="true"></i>
                     <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-                           aria-label="Search">
+                       aria-label="Search">
                 </form>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Register", "Account")">Sign Up <i class="fa fa-user-plus" aria-hidden="true"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Login", "Account")">Log In <i class="fa fa-user" aria-hidden="true"></i></a>
-                </li>
+                @Html.Partial("_LoginPartial")
+                @*<li class="nav-item">
+                <i class="fa fa-user-plus" aria-hidden="true"></i>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+            </li>
+            <li class="nav-item">
+                <i class="fa fa-user" aria-hidden="true"></i>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+            </li>*@
             </ul>
         </div>
     </nav>
