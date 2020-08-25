@@ -82,5 +82,18 @@ namespace LibraryMVC.WebUI.Controllers
 
             return View();
         }
+
+        public ActionResult Search(string searching)
+        {
+            IEnumerable<Book> books = from t in Book.allBooks select t;
+
+            if (!String.IsNullOrEmpty(searching))
+            {
+                books = books.Where(a => a.Title.ToLower().Contains(searching.ToLower()));
+            }
+
+            return View(books.ToList());
+
+        }
     }
 }

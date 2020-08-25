@@ -29,5 +29,12 @@ namespace LibraryMVC.Core.Models
         public String Image { get; set; }
         public static int Count { get; set; }
 
+        public static List<Book> allBooks = new List<Book>();
+
+        public Book()
+        {
+            allBooks.Add(this);
+        }
+
     }
 }
