@@ -62,26 +62,24 @@
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav ml-auto">
 
-                <form class="form-inline d-none d-lg-block justify-content-center md-form form-sm mt-0" style="padding: 5px">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                    @*<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-        aria-label="Search">*@
+                @*<form class="form-inline d-none d-lg-block justify-content-center md-form form-sm mt-0" style="padding: 5px">
+
+                    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+        aria-label="Search">
+                </form>*@
 
 
-        @*@using (Html.BeginForm("Search", "Home", FormMethod.Get))
-        {
-            @Html.TextBox("searching")
-            <input type="submit" value="Search" placeholder = "Search" />
-        }*@
-                </form>
+                <li class="d-none d-lg-block justify-content-center" style="align-self: center; padding-right: 10px">
+
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+                    {
+                        <i class="fas fa-search" aria-hidden="true" style="padding-right: 5px"> </i>
+                        @Html.TextBox("searching")
+                        <input type="submit" value="Search" placeholder = "Type to search"/>
+                    }
+                </li>
 
                 @Html.Partial("_LoginPartial")
-                @*<li class="nav-item">
-                <i class="fa fa-user-plus" aria-hidden="true"></i>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-            </li>
-            <li class="nav-item">
-                <i class="fa fa-user" aria-hidden="true"></i>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-            </li>*@
             </ul>
         </div>
     </nav>

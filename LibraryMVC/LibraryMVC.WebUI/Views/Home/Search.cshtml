@@ -4,19 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 style="margin-top: 30px">Results for: </h2>
+    <h4 style="margin-top: 30px; text-align: center">Searching results for: <br/><strong>"@ViewBag.SearchTerm"</strong></h4>
 <hr style="max-width:500px;" />
 <div class="container" style="padding-bottom:60px; display: flex; margin: 0px; font-size: 20px; padding-top: 10px; max-width:100%;">
     <div class="row" style="width: 100%; justify-content: center; margin-left: 0px">
         @using (Html.BeginForm("Search", "Home", FormMethod.Get))
         {
-            @Html.TextBox("searching")
-            <input type="submit" value="Search" />
         }
 
         @if (Model.Count() == 0)
         {
-            <h2 style="margin-top: 30px">Not found any book with this name</h2>
+        <h3 style="margin-top: 30px; color: crimson; text-align: center">Not found any book with searched name. Type different name</h3>
         }
         else
         {
@@ -35,7 +33,6 @@
             <div class="col-md-12 text-center">
                 @item.WriterLastName
             </div>
-
         </div>
             }
         }

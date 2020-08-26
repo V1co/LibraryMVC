@@ -391,7 +391,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\BookImages\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
