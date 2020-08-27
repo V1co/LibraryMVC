@@ -24,12 +24,28 @@ namespace LibraryMVC.WebUI.Controllers
             bookGenres = BookGenres;
         }
 
-        public ActionResult All()
-        {
-            List<Book> books;
+        public ActionResult All(string sorting) {
+            IEnumerable<Book> books = context.Collection().ToList();
 
+            switch (sorting)
+            {
+                case "titleAscending":
+                    books = books.OrderBy(a => a.Title);
+                    break;
+                case "titleDescending":
+                    books = books.OrderByDescending(a => a.Title);
+                    break;
+                case "writerAscending":
+                    books = books.OrderBy(a => a.WriterLastName);
+                    break;
+                case "writerDescending":
+                    books = books.OrderByDescending(a => a.WriterLastName);
+                    break;
+                default:
+                    books = books.OrderBy(a => a.Title);
+                    break;
+            }
             BookListViewModel model = new BookListViewModel();
-            books = context.Collection().ToList();
             model.Books = books;
 
             return View(model);
@@ -57,12 +73,29 @@ namespace LibraryMVC.WebUI.Controllers
             return View(model);
         }
 
-        public ActionResult Available()
+        public ActionResult Available(string sorting)
         {
-            List<Book> books;
+            IEnumerable<Book> books = context.Collection().ToList();
 
+            switch (sorting)
+            {
+                case "titleAscending":
+                    books = books.OrderBy(a => a.Title);
+                    break;
+                case "titleDescending":
+                    books = books.OrderByDescending(a => a.Title);
+                    break;
+                case "writerAscending":
+                    books = books.OrderBy(a => a.WriterLastName);
+                    break;
+                case "writerDescending":
+                    books = books.OrderByDescending(a => a.WriterLastName);
+                    break;
+                default:
+                    books = books.OrderBy(a => a.Title);
+                    break;
+            }
             BookListViewModel model = new BookListViewModel();
-            books = context.Collection().ToList();
             model.Books = books;
 
             return View(model);
