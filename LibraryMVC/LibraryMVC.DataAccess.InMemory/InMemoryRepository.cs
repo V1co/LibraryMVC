@@ -13,7 +13,7 @@ namespace LibraryMVC.DataAccess.InMemory
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
-        String className;
+        string className;
 
         public InMemoryRepository()
         {

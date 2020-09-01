@@ -6,21 +6,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using LibraryMVC.WebUI.Models;
+using LibraryMVC.DataAccess.SQL;
+using System.Net;
 
 namespace LibraryMVC.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+        private DataContext db = new DataContext();
 
         IRepository<Book> context;
         IRepository<BookFormat> bookFormats;
         IRepository<BookGenre> bookGenres;
+        IRepository<Customer> customerContext;
+        CustomersViewModel customers = new CustomersViewModel();
 
-        public HomeController(IRepository<Book> Context, IRepository<BookFormat> BookFormats, IRepository<BookGenre> BookGenres)
+        public HomeController(IRepository<Book> Context, IRepository<BookFormat> BookFormats, IRepository<BookGenre> BookGenres, IRepository<Customer> CustomerContext)
         {
             context = Context;
             bookFormats = BookFormats;
             bookGenres = BookGenres;
+            customerContext = CustomerContext;
         }
 
         public ActionResult Index(string Genre = null, string Format = null)
@@ -95,6 +106,45 @@ namespace LibraryMVC.WebUI.Controllers
             ViewBag.SearchTerm = searching;
 
             return View(books.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Borrow(string CustomerId, string Id)
+        {
+            if (CustomerId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(CustomerId);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            var Results = from b in db.Books
+                          select new
+                          {
+                              b.Id,
+                              b.Title,
+                              Borrowed = ((from cb in db.CustomersToBooks
+                                           where (cb.CustomerId == CustomerId) & (cb.BookId == b.Id)
+                                           select cb).Count() > 0)
+                          };
+            var CustomersViewModel = new CustomersViewModel();
+
+            CustomersViewModel.CustomerId = CustomerId;
+            CustomersViewModel.CustomerFirstName = customer.FirstName;
+            CustomersViewModel.CustomerName = customer.LastName;
+
+            var BorrowedBooks = new List<BorrowedBooksViewModel>();
+
+            foreach (var item in Results)
+            {
+                BorrowedBooks.Add(new BorrowedBooksViewModel { Id = item.Id, Name = item.Title, Borrowed = item.Borrowed });
+            }
+
+            CustomersViewModel.BorrowedBooks = BorrowedBooks;
+
+            return View(CustomersViewModel);
         }
     }
 }

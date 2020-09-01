@@ -1,0 +1,39 @@
+﻿@model LibraryMVC.Core.ViewModels.CustomersViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BorrowedBooks)
+        </dt>
+
+        <dd>
+            @foreach (var item in Model.BorrowedBooks)
+            {
+                if (item.Borrowed)
+                {
+                    <div>@item.Name</div>
+                }
+            }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryMVC.Core.Models
 {
-    public class Customer : BaseEntity
+    public class Customer: BaseEntity
     {
         public string UserId { get; set; }
         public string FirstName { get; set; }
@@ -16,6 +16,8 @@ namespace LibraryMVC.Core.Models
         public string City { get; set; }
         public string County { get; set; }
         public string PostCode { get; set; }
-        //public List<Book> borrowedBooks { get; set; }
+        public virtual ICollection<CustomerToBook> CustomersToBooks { get; set; }
+        public Customer() {
+        }
     }
 }

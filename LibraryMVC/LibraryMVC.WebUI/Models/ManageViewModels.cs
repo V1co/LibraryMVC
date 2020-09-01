@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using LibraryMVC.Core.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
@@ -12,7 +13,8 @@ namespace LibraryMVC.WebUI.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
-    }
+        public List<Book> borrowedBooks { get; set; }
+}
 
     public class ManageLoginsViewModel
     {

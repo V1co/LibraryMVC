@@ -28,10 +28,9 @@ namespace LibraryMVC.Core.Models
         public String Description { get; set; }
         public String Image { get; set; }
         public static int Count { get; set; }
-
+        public virtual ICollection<CustomerToBook> CustomersToBooks { get; set; }
         public Book()
         {
-            
         }
     }
 }
