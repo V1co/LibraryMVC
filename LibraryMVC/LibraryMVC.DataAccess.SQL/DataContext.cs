@@ -20,6 +20,7 @@ namespace LibraryMVC.DataAccess.SQL
         public DbSet<BookFormat> Formats { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerToBook> CustomersToBooks { get; set; }
+        public DbSet<BorrowBook> BorrowBook { get; set; }
 
     }
 }

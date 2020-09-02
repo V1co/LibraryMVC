@@ -194,6 +194,7 @@
     <Compile Include="Controllers\BookFormatManagerController.cs" />
     <Compile Include="Controllers\BookGenreManagerController.cs" />
     <Compile Include="Controllers\BookManagerController.cs" />
+    <Compile Include="Controllers\BorrowController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\FormatsController.cs" />
     <Compile Include="Controllers\GenresController.cs" />
@@ -402,6 +403,9 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Home\Borrow.cshtml" />
+    <Content Include="Views\Borrow\Index.cshtml" />
+    <Content Include="Views\Borrow\BorrowConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

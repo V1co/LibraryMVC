@@ -53,6 +53,7 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookFormat.cs" />
     <Compile Include="Models\BookGenre.cs" />
+    <Compile Include="Models\BorrowBook.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerToBook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

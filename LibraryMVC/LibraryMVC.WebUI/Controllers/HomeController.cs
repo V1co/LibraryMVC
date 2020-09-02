@@ -1,4 +1,5 @@
-﻿using LibraryMVC.Core.Contracts;
+﻿  
+using LibraryMVC.Core.Contracts;
 using LibraryMVC.Core.Models;
 using LibraryMVC.Core.ViewModels;
 using System;
@@ -13,6 +14,7 @@ using Microsoft.Owin.Security;
 using LibraryMVC.WebUI.Models;
 using LibraryMVC.DataAccess.SQL;
 using System.Net;
+using System.Data.Entity;
 
 namespace LibraryMVC.WebUI.Controllers
 {
@@ -108,43 +110,37 @@ namespace LibraryMVC.WebUI.Controllers
             return View(books.ToList());
         }
 
-        [HttpPost]
-        public ActionResult Borrow(string CustomerId, string Id)
+        public ActionResult Borrow(string id)
         {
-            if (CustomerId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(CustomerId);
-            if (customer == null)
+            Book book = db.Books.Find(id);
+            if (book == null)
             {
                 return HttpNotFound();
             }
-            var Results = from b in db.Books
-                          select new
-                          {
-                              b.Id,
-                              b.Title,
-                              Borrowed = ((from cb in db.CustomersToBooks
-                                           where (cb.CustomerId == CustomerId) & (cb.BookId == b.Id)
-                                           select cb).Count() > 0)
-                          };
-            var CustomersViewModel = new CustomersViewModel();
+            var model = new CustomerToBook();
+            model.BookId = id;
 
-            CustomersViewModel.CustomerId = CustomerId;
-            CustomersViewModel.CustomerFirstName = customer.FirstName;
-            CustomersViewModel.CustomerName = customer.LastName;
+            return View(book);
+        }
 
-            var BorrowedBooks = new List<BorrowedBooksViewModel>();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Borrow(CustomerToBook borrowedBook)
+        {
+            borrowedBook.Customer = User.Identity.GetUserName();
 
-            foreach (var item in Results)
+            Book book = db.Books.Find(borrowedBook.Book);
+            book.NumberOfBooks--;
+            db.Entry(book).State = EntityState.Modified;
+
+            if (ModelState.IsValid)
             {
-                BorrowedBooks.Add(new BorrowedBooksViewModel { Id = item.Id, Name = item.Title, Borrowed = item.Borrowed });
+                db.CustomersToBooks.Add(borrowedBook);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
             }
 
-            CustomersViewModel.BorrowedBooks = BorrowedBooks;
-
-            return View(CustomersViewModel);
+            return View(borrowedBook);
         }
     }
 }

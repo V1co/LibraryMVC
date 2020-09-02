@@ -1,198 +1,198 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using LibraryMVC.Core.Models;
-using LibraryMVC.Core.ViewModels;
-using LibraryMVC.DataAccess.SQL;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Data;
+//using System.Data.Entity;
+//using System.Linq;
+//using System.Net;
+//using System.Web;
+//using System.Web.Mvc;
+//using LibraryMVC.Core.Models;
+//using LibraryMVC.Core.ViewModels;
+//using LibraryMVC.DataAccess.SQL;
 
-namespace LibraryMVC.WebUI.Controllers
-{
-    public class CustomersController : Controller
-    {
-        private DataContext db = new DataContext();
+//namespace LibraryMVC.WebUI.Controllers
+//{
+//    public class CustomersController : Controller
+//    {
+//        private DataContext db = new DataContext();
 
-        // GET: Customers
-        public ActionResult Index()
-        {
-            return View(db.Customers.ToList());
-        }
+//        // GET: Customers
+//        public ActionResult Index()
+//        {
+//            return View(db.Customers.ToList());
+//        }
 
-        // GET: Customers/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            var Results = from b in db.Books
-                          select new
-                          {
-                              b.Id,
-                              b.Title,
-                              Borrowed = ((from cb in db.CustomersToBooks
-                                           where (cb.CustomerId == id) & (cb.BookId == b.Id)
-                                           select cb).Count() > 0)
-                          };
-            var CustomersViewModel = new CustomersViewModel();
+//        // GET: Customers/Details/5
+//        public ActionResult Details(string id)
+//        {
+//            if (id == null)
+//            {
+//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+//            }
+//            Customer customer = db.Customers.Find(id);
+//            if (customer == null)
+//            {
+//                return HttpNotFound();
+//            }
+//            var Results = from b in db.Books
+//                          select new
+//                          {
+//                              b.Id,
+//                              b.Title,
+//                              Borrowed = ((from cb in db.CustomersToBooks
+//                                           where (cb.CustomerId == id) & (cb.BookId == b.Id)
+//                                           select cb).Count() > 0)
+//                          };
+//            var CustomersViewModel = new CustomersViewModel();
 
-            CustomersViewModel.CustomerId = id;
-            CustomersViewModel.CustomerFirstName = customer.FirstName;
-            CustomersViewModel.CustomerName = customer.LastName;
+//            CustomersViewModel.CustomerId = id;
+//            CustomersViewModel.CustomerFirstName = customer.FirstName;
+//            CustomersViewModel.CustomerName = customer.LastName;
 
-            var BorrowedBooks = new List<BorrowedBooksViewModel>();
+//            var BorrowedBooks = new List<BorrowedBooksViewModel>();
 
-            foreach (var item in Results)
-            {
-                BorrowedBooks.Add(new BorrowedBooksViewModel { Id = item.Id, Name = item.Title, Borrowed = item.Borrowed });
-            }
+//            foreach (var item in Results)
+//            {
+//                BorrowedBooks.Add(new BorrowedBooksViewModel { Id = item.Id, Name = item.Title, Borrowed = item.Borrowed });
+//            }
 
-            CustomersViewModel.BorrowedBooks = BorrowedBooks;
+//            CustomersViewModel.BorrowedBooks = BorrowedBooks;
 
-            return View(CustomersViewModel);
-        }
+//            return View(CustomersViewModel);
+//        }
 
-        // GET: Customers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+//        // GET: Customers/Create
+//        public ActionResult Create()
+//        {
+//            return View();
+//        }
 
-        // POST: Customers/Create
-        // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
-        // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,FirstName,LastName,Email,Street,City,County,PostCode,CreatedAt")] Customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+//        // POST: Customers/Create
+//        // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
+//        // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Create([Bind(Include = "Id,UserId,FirstName,LastName,Email,Street,City,County,PostCode,CreatedAt")] Customer customer)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                db.Customers.Add(customer);
+//                db.SaveChanges();
+//                return RedirectToAction("Index");
+//            }
 
-            return View(customer);
-        }
+//            return View(customer);
+//        }
 
-        // GET: Customers/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
+//        // GET: Customers/Edit/5
+//        public ActionResult Edit(string id)
+//        {
+//            if (id == null)
+//            {
+//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+//            }
+//            Customer customer = db.Customers.Find(id);
+//            if (customer == null)
+//            {
+//                return HttpNotFound();
+//            }
 
-            var Results = from b in db.Books
-                          select new
-                          {
-                              b.Id,
-                              b.Title,
-                              Borrowed = ((from cb in db.CustomersToBooks
-                                          where (cb.CustomerId == id) & (cb.BookId == b.Id)
-                                          select cb).Count() > 0)
-                          };
-            var CustomersViewModel = new CustomersViewModel();
+//            var Results = from b in db.Books
+//                          select new
+//                          {
+//                              b.Id,
+//                              b.Title,
+//                              Borrowed = ((from cb in db.CustomersToBooks
+//                                          where (cb.CustomerId == id) & (cb.BookId == b.Id)
+//                                          select cb).Count() > 0)
+//                          };
+//            var CustomersViewModel = new CustomersViewModel();
 
-            CustomersViewModel.CustomerId = id;
-            CustomersViewModel.CustomerFirstName = customer.FirstName;
-            CustomersViewModel.CustomerName = customer.LastName;
+//            CustomersViewModel.CustomerId = id;
+//            CustomersViewModel.CustomerFirstName = customer.FirstName;
+//            CustomersViewModel.CustomerName = customer.LastName;
 
-            var BorrowedBooks = new List<BorrowedBooksViewModel>();
+//            var BorrowedBooks = new List<BorrowedBooksViewModel>();
 
-            foreach (var item in Results)
-            {
-                BorrowedBooks.Add(new BorrowedBooksViewModel { Id = item.Id, Name = item.Title, Borrowed = item.Borrowed });
-            }
+//            foreach (var item in Results)
+//            {
+//                BorrowedBooks.Add(new BorrowedBooksViewModel { Id = item.Id, Name = item.Title, Borrowed = item.Borrowed });
+//            }
 
-            CustomersViewModel.BorrowedBooks = BorrowedBooks;
+//            CustomersViewModel.BorrowedBooks = BorrowedBooks;
 
-            return View(CustomersViewModel);
-        }
+//            return View(CustomersViewModel);
+//        }
 
-        // POST: Customers/Edit/5
-        // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
-        // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(CustomersViewModel customer)
-        {
-            if (ModelState.IsValid)
-            {
-                var MyCustomer = db.Customers.Find(customer.CustomerId);
+//        // POST: Customers/Edit/5
+//        // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
+//        // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Edit(CustomersViewModel customer)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                var MyCustomer = db.Customers.Find(customer.CustomerId);
 
-                MyCustomer.FirstName = customer.CustomerFirstName;
-                MyCustomer.LastName = customer.CustomerName;
+//                MyCustomer.FirstName = customer.CustomerFirstName;
+//                MyCustomer.LastName = customer.CustomerName;
 
-                foreach (var item in db.CustomersToBooks)
-                {
-                    if (item.CustomerId == customer.CustomerId)
-                    {
-                        db.Entry(item).State = System.Data.Entity.EntityState.Deleted;
-                    }
-                }
+//                foreach (var item in db.CustomersToBooks)
+//                {
+//                    if (item.CustomerId == customer.CustomerId)
+//                    {
+//                        db.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+//                    }
+//                }
 
-                foreach (var item in customer.BorrowedBooks)
-                {
-                    if (item.Borrowed)
-                    {
-                        db.CustomersToBooks.Add(new CustomerToBook() { CustomerId = customer.CustomerId, BookId = item.Id });
-                    }
-                }
+//                foreach (var item in customer.BorrowedBooks)
+//                {
+//                    if (item.Borrowed)
+//                    {
+//                        db.CustomersToBooks.Add(new CustomerToBook() { CustomerId = customer.CustomerId, BookId = item.Id });
+//                    }
+//                }
 
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(customer);
-        }
+//                db.SaveChanges();
+//                return RedirectToAction("Index");
+//            }
+//            return View(customer);
+//        }
 
-        // GET: Customers/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
+//        // GET: Customers/Delete/5
+//        public ActionResult Delete(string id)
+//        {
+//            if (id == null)
+//            {
+//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+//            }
+//            Customer customer = db.Customers.Find(id);
+//            if (customer == null)
+//            {
+//                return HttpNotFound();
+//            }
+//            return View(customer);
+//        }
 
-        // POST: Customers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+//        // POST: Customers/Delete/5
+//        [HttpPost, ActionName("Delete")]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult DeleteConfirmed(string id)
+//        {
+//            Customer customer = db.Customers.Find(id);
+//            db.Customers.Remove(customer);
+//            db.SaveChanges();
+//            return RedirectToAction("Index");
+//        }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-    }
-}
+//        protected override void Dispose(bool disposing)
+//        {
+//            if (disposing)
+//            {
+//                db.Dispose();
+//            }
+//            base.Dispose(disposing);
+//        }
+//    }
+//}

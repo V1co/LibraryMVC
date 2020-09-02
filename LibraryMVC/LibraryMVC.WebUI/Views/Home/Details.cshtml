@@ -1,102 +1,109 @@
-﻿@model LibraryMVC.Core.ViewModels.CustomersViewModel
+﻿@model LibraryMVC.Core.Models.Book
 
 @{
     ViewBag.Title = Model.Title + " Details";
 }
 
-    <div class="container" style="padding-top: 20px; padding-bottom: 60px">
-        <h2>
-            @Html.DisplayFor(model => model.Title)
-        </h2>
-        <hr style="max-width:500px;" />
+<div class="container" style="padding-top: 20px; padding-bottom: 60px">
+    <h2>
+        @Html.DisplayFor(model => model.Title)
+    </h2>
+    <hr style="max-width:500px;" />
 
-        <div style="display: flex; padding-top: 20px">
-            <div class="col-8 col-md-6 col-lg-5 col-xl-4">
-                <img style="max-height:500px; max-width: 300px;" src="~/Content/BookImages/@Model.Image" />
-            </div>
-
-            <dl class="dl-horizontal col-4 col-md-6 col-lg-7 col-xl-8">
-                <dt>
-                    @Html.DisplayNameFor(model => model.WriterFirstName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.WriterFirstName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.WriterLastName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.WriterLastName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ReleaseDate)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ReleaseDate)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Publisher)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Publisher)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.NumberOfBooks)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.NumberOfBooks)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Genre)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Genre)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Format)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Format)
-                </dd>
-                </dl>
-                
+    <div style="display: flex; padding-top: 20px">
+        <div class="col-8 col-md-6 col-lg-5 col-xl-4">
+            <img style="max-height:500px; max-width: 300px;" src="~/Content/BookImages/@Model.Image" />
         </div>
-        <dl class="dl-horizontal col-md-12">
-            <dt></dt>
-            <dd></dd>
+
+        <dl class="dl-horizontal col-4 col-md-6 col-lg-7 col-xl-8">
             <dt>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.WriterFirstName)
             </dt>
+
             <dd>
-                @Html.DisplayFor(model => model.Description)
+                @Html.DisplayFor(model => model.WriterFirstName)
             </dd>
 
-            <dt></dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.WriterLastName)
+            </dt>
 
-            <dd style="padding-top: 10px">
-                @Model.BorrowedBooks[].Borrowed
-                @Html.
-                @Html.ActionLink("Borrow book", "Index", "Manage", null, new { @class = "btn btn-primary" })
-                }
-                @Html.ActionLink("Back to List", "Index", "Home", null, new { @class = "btn btn-info" })
+            <dd>
+                @Html.DisplayFor(model => model.WriterLastName)
             </dd>
 
+            <dt>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </dt>
 
+            <dd>
+                @Html.DisplayFor(model => model.ReleaseDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Publisher)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfBooks)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfBooks)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Genre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Genre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Format)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Format)
+            </dd>
         </dl>
 
     </div>
+    <dl class="dl-horizontal col-md-12">
+        <dt></dt>
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
 
-        <div class="clearfix"></div>
+        <dt></dt>
+
+        <dd style="padding-top: 10px">
+
+            @if (Model.NumberOfBooks > 0)
+            {
+                @Html.ActionLink("Borrow", "Borrow", "Home", new { id = Model.Id }, new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                @Html.ActionLink("Currently not available", "Index", "Home", new { id = Model.Id }, new { @class = "btn btn-danger" })
+            }
+
+            @Html.ActionLink("Back to List", "Index", "Home", null, new { @class = "btn btn-info" })
+
+        </dd>
+
+
+    </dl>
+
+</div>
+
+<div class="clearfix"></div>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<LibraryMVC.Core.ViewModels.BorrowedBooksViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rented Books</h2>
+@User.Identity.Name
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.BorrowedBookId })
+            </td>
+        </tr>
+    }
+
+</table>
