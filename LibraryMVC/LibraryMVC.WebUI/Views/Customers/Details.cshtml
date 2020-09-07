@@ -4,36 +4,46 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+    <div class="container" style="margin-top:30px; padding-bottom:50px;">
+        <h2>Customer Details</h2>
+        <div class="container" style="margin-top:30px; margin-bottom:30px;">
+            <div class="form-horizontal">
+                <hr style="max-width:500px;" />
 
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerFirstName)
-        </dt>
+                <div>
+                    <dl class="dl-horizontal text-center">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CustomerFirstName)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CustomerName)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.CustomerFirstName)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BorrowedBooks)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CustomerName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CustomerName)
+                        </dd>
 
-        <dd>
-            @foreach (var item in Model.BorrowedBooks)
-            {
-                if (item.Borrowed)
-                {
-                    <div>@item.Name</div>
-                }
-            }
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                        <strong>List of borrowed books:</strong>
+                        <dd>
+                            @foreach (var item in Model.BorrowedBooks)
+                            {
+                                if (item.Borrowed)
+                                {
+                                    <div>@item.Name</div>
+                                }
+                            }
+                        </dd>
+                    </dl>
+                </div>
+                <div class="text-center">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.CustomerId }, new { @class = "btn btn-info" })
+                </div>
+            </div>
+                </div>
+                </div>
+                

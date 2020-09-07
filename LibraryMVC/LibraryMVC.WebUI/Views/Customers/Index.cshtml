@@ -1,81 +1,55 @@
 ﻿@model IEnumerable<LibraryMVC.Core.Models.Customer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Customers";
 }
 
-<h2>Index</h2>
+    <h2 style="margin-top: 30px">Customers Manager</h2>
+    <div class="container m-0 m-lg-0 pl-xl-5 pr-xl-5" style="padding-bottom:40px; display: flex; padding-top: 20px; max-width:100%; font-size: 18px;">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayName("Admin")
+                    </th>
+                </tr>
+            </thead>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Street)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.County)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th></th>
-    </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @Html.DisplayFor(model => item.FirstName)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(model => item.LastName)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(model => item.Email)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(model => item.PhoneNumber)
+                        </td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Street)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.County)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+                        <td class="text-center">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
 
-</table>
+        </table>
+    </div>

@@ -1,4 +1,4 @@
-﻿@model LibraryMVC.Core.ViewModels.CustomersViewModel
+﻿@model LibraryMVC.Core.Models.Book
 
 @{
     ViewBag.Title = Model.Title + " Details";
@@ -87,10 +87,6 @@
             <dt></dt>
 
             <dd style="padding-top: 10px">
-                @Model.BorrowedBooks[].Borrowed
-                @Html.
-                @Html.ActionLink("Borrow book", "Index", "Manage", null, new { @class = "btn btn-primary" })
-                }
                 @Html.ActionLink("Back to List", "Index", "Home", null, new { @class = "btn btn-info" })
             </dd>
 

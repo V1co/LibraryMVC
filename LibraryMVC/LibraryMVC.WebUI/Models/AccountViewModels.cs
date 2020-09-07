@@ -89,12 +89,15 @@ namespace LibraryMVC.WebUI.Models
         [Display(Name = "Last Name")]
         [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in Last Name field")]
         public string LastName { get; set; }
-        
         [Required]
-        [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in Street field")]
+        [Display(Name = "Phone Number")]
+        [RegularExpression(@"[0-9]{10,11}", ErrorMessage = "Please provide correct Phone Number format")]
+        public string PhoneNumber { get; set; }
+        [Required]
+        [RegularExpression(@"[a-zA-Z0-9]{2,30}", ErrorMessage = "Special characters cannot be used in Street field")]
         public string Street { get; set; }
         [Required]
-        [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in City field")]
+        [RegularExpression(@"([A-Za-z0-9 ]){2,30}", ErrorMessage = "Numbers and special characters cannot be used in City field")]
         public string City { get; set; }
         [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in County field")]
         public string County { get; set; }

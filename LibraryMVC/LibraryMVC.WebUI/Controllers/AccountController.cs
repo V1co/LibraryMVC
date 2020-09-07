@@ -160,11 +160,11 @@ namespace LibraryMVC.WebUI.Controllers
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         Email = model.Email,
+                        PhoneNumber = model.PhoneNumber,
                         Street = model.Street,
                         City = model.City,
                         County = model.County,
-                        PostCode = model.PostCode,
-                        UserId = user.Id
+                        PostCode = model.PostCode
                     };
 
                     customerRepository.Insert(customer);

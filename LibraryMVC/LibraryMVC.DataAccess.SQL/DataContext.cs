@@ -13,8 +13,8 @@ namespace LibraryMVC.DataAccess.SQL
     {
         public DataContext()
             : base("DefaultConnection") {
-
         }
+
         public DbSet<Book> Books { get; set; }
         public DbSet<BookGenre> Genres { get; set; }
         public DbSet<BookFormat> Formats { get; set; }

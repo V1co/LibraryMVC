@@ -47,6 +47,13 @@
                 </div>
 
                 <div class="form-group text-center font-weight-bold" style="font-size: 18px">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+                    <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 mx-auto">
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group text-center font-weight-bold" style="font-size: 18px">
                     @Html.LabelFor(m => m.Street, new { @class = "col-md-2 control-label" })
                     <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 mx-auto">
                         @Html.TextBoxFor(m => m.Street, new { @class = "form-control" })
