@@ -12,6 +12,7 @@ using LibraryMVC.DataAccess.SQL;
 
 namespace LibraryMVC.WebUI.Controllers
 {
+    [Authorize(Users = "admin@library.com")]
     public class CustomersController : Controller
     {
         private DataContext db = new DataContext();

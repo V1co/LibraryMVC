@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace LibraryMVC.WebUI.Controllers
 {
+    [Authorize(Users = "admin@library.com")]
     public class BookFormatManagerController : Controller
     {
         // GET: BookFormatManager

@@ -12,10 +12,11 @@ using LibraryMVC.DataAccess.InMemory;
 
 namespace LibraryMVC.WebUI.Controllers
 {
+    [Authorize(Users = "admin@library.com")]
     public class BookManagerController : Controller
     {
         // GET: BookManager
-
+        
         IRepository<Book> context;
         IRepository<BookFormat> bookFormats;
         IRepository<BookGenre> bookGenres;
@@ -109,7 +110,6 @@ namespace LibraryMVC.WebUI.Controllers
                 bookToEdit.WriterLastName = book.WriterLastName;
                 bookToEdit.ReleaseDate = book.ReleaseDate;
                 bookToEdit.Publisher = book.Publisher;
-                bookToEdit.NumberOfBooks = book.NumberOfBooks;
                 bookToEdit.Genre = book.Genre;
                 bookToEdit.Format = book.Format;
                 bookToEdit.Description = book.Description;

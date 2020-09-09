@@ -89,6 +89,18 @@
     <Compile Include="Migrations\202009060355171_nowka.Designer.cs">
       <DependentUpon>202009060355171_nowka.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009090326202_changes.cs" />
+    <Compile Include="Migrations\202009090326202_changes.Designer.cs">
+      <DependentUpon>202009090326202_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009090336455_availability.cs" />
+    <Compile Include="Migrations\202009090336455_availability.Designer.cs">
+      <DependentUpon>202009090336455_availability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009090357013_contextchange.cs" />
+    <Compile Include="Migrations\202009090357013_contextchange.Designer.cs">
+      <DependentUpon>202009090357013_contextchange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLRepository.cs" />
@@ -255,6 +267,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009060355171_nowka.resx">
       <DependentUpon>202009060355171_nowka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009090326202_changes.resx">
+      <DependentUpon>202009090326202_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009090336455_availability.resx">
+      <DependentUpon>202009090336455_availability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009090357013_contextchange.resx">
+      <DependentUpon>202009090357013_contextchange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

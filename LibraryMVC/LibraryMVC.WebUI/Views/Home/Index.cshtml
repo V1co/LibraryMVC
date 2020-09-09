@@ -118,7 +118,7 @@
                         <div class="carousel-inner">
                             @{
                                 var third = true;
-                                List<LibraryMVC.Core.Models.Book> availableBooks = Model.Books.OrderByDescending(a => a.NumberOfBooks).ThenBy(a => a.Id).ToList();
+                                List<LibraryMVC.Core.Models.Book> availableBooks = Model.Books.OrderByDescending(a => a.Availability == true).ThenBy(a => a.Id).ToList();
                             }
                             @for (int i = 0; i < 8; i++)
                             {
