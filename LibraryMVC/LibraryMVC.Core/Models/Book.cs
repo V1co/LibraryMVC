@@ -25,8 +25,8 @@ namespace LibraryMVC.Core.Models
         public String Format { get; set; }
         public String Description { get; set; }
         public String Image { get; set; }
-        public bool Availability { get; set; }
-        public static int Count { get; set; }
+        [DisplayName("Number of borrows")]
+        public int NumberOfBorrows { get; set; }
         public virtual ICollection<CustomerToBook> CustomersToBooks { get; set; }
         public Book()
         {

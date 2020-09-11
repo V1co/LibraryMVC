@@ -96,16 +96,33 @@ namespace LibraryMVC.WebUI.Controllers
 
         public ActionResult Search(string searching)
         {
-            IEnumerable<Book> books = context.Collection().ToList();
+            IEnumerable<Book> bookTitles = context.Collection().ToList();
+            IEnumerable<Book> bookAuthors = context.Collection().ToList();
 
             if (!String.IsNullOrEmpty(searching))
             {
-                books = books.Where(a => a.Title.ToLower().Contains(searching.ToLower()));
+                bookTitles = bookTitles.Where(a => a.Title.ToLower().Contains(searching.ToLower()));
+            }
+
+            if (!String.IsNullOrEmpty(searching))
+            {
+                bookAuthors = bookAuthors.Where(a => a.WriterLastName.ToLower().Contains(searching.ToLower()));
             }
 
             ViewBag.SearchTerm = searching;
+            var model = new List<Book>();
 
-            return View(books.ToList());
+            foreach(var item in bookTitles)
+            {
+                model.Add(item);
+            }
+
+            foreach (var item in bookAuthors)
+            {
+                model.Add(item);
+            }
+
+            return View(model);
         }
 
         [HttpPost]
@@ -140,6 +157,7 @@ namespace LibraryMVC.WebUI.Controllers
             foreach (var item in Results)
             {
                 BorrowedBooks.Add(new BorrowedBooksViewModel { Id = item.Id, Name = item.Title, Borrowed = item.Borrowed });
+                db.Books.Find(Id).NumberOfBorrows++;
             }
 
             CustomersViewModel.BorrowedBooks = BorrowedBooks;

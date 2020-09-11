@@ -49,57 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\202008090956295_Initial.cs" />
-    <Compile Include="Migrations\202008090956295_Initial.Designer.cs">
-      <DependentUpon>202008090956295_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202009101217269_ChangeOfRecommend.cs" />
+    <Compile Include="Migrations\202009101217269_ChangeOfRecommend.Designer.cs">
+      <DependentUpon>202009101217269_ChangeOfRecommend.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008160127595_AddCustomer.cs" />
-    <Compile Include="Migrations\202008160127595_AddCustomer.Designer.cs">
-      <DependentUpon>202008160127595_AddCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008180131180_AddedBorrowBook.cs" />
-    <Compile Include="Migrations\202008180131180_AddedBorrowBook.Designer.cs">
-      <DependentUpon>202008180131180_AddedBorrowBook.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008290052388_BorrowingLogic.cs" />
-    <Compile Include="Migrations\202008290052388_BorrowingLogic.Designer.cs">
-      <DependentUpon>202008290052388_BorrowingLogic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008301556128_BorrowBooksImplementation.cs" />
-    <Compile Include="Migrations\202008301556128_BorrowBooksImplementation.Designer.cs">
-      <DependentUpon>202008301556128_BorrowBooksImplementation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008301739111_BorrowBooksChanges.cs" />
-    <Compile Include="Migrations\202008301739111_BorrowBooksChanges.Designer.cs">
-      <DependentUpon>202008301739111_BorrowBooksChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009060133516_refresh.cs" />
-    <Compile Include="Migrations\202009060133516_refresh.Designer.cs">
-      <DependentUpon>202009060133516_refresh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009060140555_customerchanges.cs" />
-    <Compile Include="Migrations\202009060140555_customerchanges.Designer.cs">
-      <DependentUpon>202009060140555_customerchanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009060202518_new.cs" />
-    <Compile Include="Migrations\202009060202518_new.Designer.cs">
-      <DependentUpon>202009060202518_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009060355171_nowka.cs" />
-    <Compile Include="Migrations\202009060355171_nowka.Designer.cs">
-      <DependentUpon>202009060355171_nowka.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009090326202_changes.cs" />
-    <Compile Include="Migrations\202009090326202_changes.Designer.cs">
-      <DependentUpon>202009090326202_changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009090336455_availability.cs" />
-    <Compile Include="Migrations\202009090336455_availability.Designer.cs">
-      <DependentUpon>202009090336455_availability.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009090357013_contextchange.cs" />
-    <Compile Include="Migrations\202009090357013_contextchange.Designer.cs">
-      <DependentUpon>202009090357013_contextchange.cs</DependentUpon>
+    <Compile Include="Migrations\202009101235066_NumberOfBorrows.cs" />
+    <Compile Include="Migrations\202009101235066_NumberOfBorrows.Designer.cs">
+      <DependentUpon>202009101235066_NumberOfBorrows.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,44 +194,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008090956295_Initial.resx">
-      <DependentUpon>202008090956295_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009101217269_ChangeOfRecommend.resx">
+      <DependentUpon>202009101217269_ChangeOfRecommend.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008160127595_AddCustomer.resx">
-      <DependentUpon>202008160127595_AddCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008180131180_AddedBorrowBook.resx">
-      <DependentUpon>202008180131180_AddedBorrowBook.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008290052388_BorrowingLogic.resx">
-      <DependentUpon>202008290052388_BorrowingLogic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008301556128_BorrowBooksImplementation.resx">
-      <DependentUpon>202008301556128_BorrowBooksImplementation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008301739111_BorrowBooksChanges.resx">
-      <DependentUpon>202008301739111_BorrowBooksChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009060133516_refresh.resx">
-      <DependentUpon>202009060133516_refresh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009060140555_customerchanges.resx">
-      <DependentUpon>202009060140555_customerchanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009060202518_new.resx">
-      <DependentUpon>202009060202518_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009060355171_nowka.resx">
-      <DependentUpon>202009060355171_nowka.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009090326202_changes.resx">
-      <DependentUpon>202009090326202_changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009090336455_availability.resx">
-      <DependentUpon>202009090336455_availability.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009090357013_contextchange.resx">
-      <DependentUpon>202009090357013_contextchange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009101235066_NumberOfBorrows.resx">
+      <DependentUpon>202009101235066_NumberOfBorrows.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -152,6 +152,7 @@ namespace LibraryMVC.WebUI.Controllers
                     if (item.Borrowed)
                     {
                         db.CustomersToBooks.Add(new CustomerToBook() { CustomerId = customer.CustomerId, BookId = item.Id });
+                        db.Books.Find(item.Id).NumberOfBorrows++;
                     }
                 }
 

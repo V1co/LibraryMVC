@@ -80,19 +80,16 @@
                 <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel" style="max-height: 400px; max-width: 250px">
                     <div class="carousel-inner">
                         @{
-                            List<LibraryMVC.Core.Models.Book> recommendedBooks = Model.Books.ToList();
-                            Random random = new Random();
-                            var r = random.Next(recommendedBooks.Count);
+                            List<LibraryMVC.Core.Models.Book> recommendedBooks = Model.Books.OrderByDescending(b => b.NumberOfBorrows).ToList();
                             var second = true;
 
-                            for (int i = 0; i < 8; i++)
+                            foreach (var book in recommendedBooks)
                             {
                                 <div class="carousel-item @(second ? Html.Raw("active") : Html.Raw(""))">
-                                    <img class="d-block w-100 h-100" src="~/Content/BookImages/@recommendedBooks[r].Image" alt="@recommendedBooks[r].Title" style="width: 100%; height: 400px !important;">
-                                    <strong>@Html.ActionLink(@recommendedBooks[r].Title, "Details", new { Id = recommendedBooks[r].Id })</strong>
+                                    <img class="d-block w-100 h-100" src="~/Content/BookImages/@book.Image" alt="@book.Title" style="width: 100%; height: 400px !important;">
+                                    <strong>@Html.ActionLink(@book.Title, "Details", new { Id = book.Id })</strong>
                                 </div>
                                 second = false;
-                                r = random.Next(recommendedBooks.Count);
                             }
                         }
                     </div>
@@ -118,7 +115,7 @@
                         <div class="carousel-inner">
                             @{
                                 var third = true;
-                                List<LibraryMVC.Core.Models.Book> availableBooks = Model.Books.OrderByDescending(a => a.Availability == true).ThenBy(a => a.Id).ToList();
+                                List<LibraryMVC.Core.Models.Book> availableBooks = Model.Books.OrderBy(a => a.CreatedAt).ThenBy(a => a.Id).ToList();
                             }
                             @for (int i = 0; i < 8; i++)
                             {

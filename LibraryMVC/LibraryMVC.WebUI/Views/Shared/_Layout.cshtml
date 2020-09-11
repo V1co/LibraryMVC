@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #333;">
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #333;">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown" style="text-align: center; font-size: 20px">
@@ -57,13 +57,13 @@
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" style="text-align: center; font-size: 20px">
             <ul class="navbar-nav ml-auto">
 
-                <li class="d-none d-xl-block justify-content-center" style="align-self: center; padding-right: 10px">
+                <li class="searchbox d-inline d-md-none d-lg-none d-xl-inline order-6 order-xl-0" style="align-self: center; padding-right: 10px">
 
                     @using (Html.BeginForm("Search", "Home", FormMethod.Get))
                     {
-                        <i class="fas fa-search" aria-hidden="true" style="padding-right: 5px"> </i>
-                        @Html.TextBox("searching")
-                        <input type="submit" value="Search" placeholder = "Type to search"/>
+                        <i class="fas fa-search" aria-hidden="true" style="padding-right: 5px;"> </i>
+                        @Html.TextBox("searching", null, new { style = "width: 160px; text-align: center", placeholder="Search me" })
+                        <input type="submit" value="Search"/>
                     }
                 </li>
 

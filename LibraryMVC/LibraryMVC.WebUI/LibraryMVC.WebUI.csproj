@@ -202,19 +202,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008160230320_InitialCreate.cs" />
-    <Compile Include="Migrations\202008160230320_InitialCreate.Designer.cs">
-      <DependentUpon>202008160230320_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008290038310_BorrowingLogic.cs" />
-    <Compile Include="Migrations\202008290038310_BorrowingLogic.Designer.cs">
-      <DependentUpon>202008290038310_BorrowingLogic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009090324535_changes.cs" />
-    <Compile Include="Migrations\202009090324535_changes.Designer.cs">
-      <DependentUpon>202009090324535_changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -405,10 +392,12 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Books\Available.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\BookImages\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -438,17 +427,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008160230320_InitialCreate.resx">
-      <DependentUpon>202008160230320_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008290038310_BorrowingLogic.resx">
-      <DependentUpon>202008290038310_BorrowingLogic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009090324535_changes.resx">
-      <DependentUpon>202009090324535_changes.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
