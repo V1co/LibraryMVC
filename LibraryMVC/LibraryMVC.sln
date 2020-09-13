@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryMVC.DataAccess.SQL",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryMVC.DataAccess.InMemory", "LibraryMVC.DataAccess.InMemory\LibraryMVC.DataAccess.InMemory.csproj", "{A7EA665C-8EC2-4CCA-85A7-D655A784B7A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryMVC.Services", "LibraryMVC.Services\LibraryMVC.Services.csproj", "{E4AB1036-F17B-4028-BF61-F3C358744A2A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryMVC.WebUI", "LibraryMVC.WebUI\LibraryMVC.WebUI.csproj", "{756603CD-6299-4743-A794-27DB9EE7D459}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryMVC.WebUI.Tests", "LibraryMVC.WebUI.Tests\LibraryMVC.WebUI.Tests.csproj", "{533FD187-8347-46BC-87AF-8363E9918E37}"
@@ -33,10 +31,6 @@ Global
 		{A7EA665C-8EC2-4CCA-85A7-D655A784B7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7EA665C-8EC2-4CCA-85A7-D655A784B7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7EA665C-8EC2-4CCA-85A7-D655A784B7A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4AB1036-F17B-4028-BF61-F3C358744A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4AB1036-F17B-4028-BF61-F3C358744A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4AB1036-F17B-4028-BF61-F3C358744A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4AB1036-F17B-4028-BF61-F3C358744A2A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{756603CD-6299-4743-A794-27DB9EE7D459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{756603CD-6299-4743-A794-27DB9EE7D459}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{756603CD-6299-4743-A794-27DB9EE7D459}.Release|Any CPU.ActiveCfg = Release|Any CPU

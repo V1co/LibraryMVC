@@ -62,30 +62,6 @@ namespace LibraryMVC.WebUI.Controllers
             return View(CustomersViewModel);
         }
 
-        // GET: Customers/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        // POST: Customers/Create
-        // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
-        // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email,Street,City,County,PostCode,CreatedAt")] Customer customer)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Customers.Add(customer);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(customer);
-        //}
-
-        // GET: Customers/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)

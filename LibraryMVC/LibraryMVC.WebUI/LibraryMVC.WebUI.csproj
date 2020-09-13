@@ -397,7 +397,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\BookImages\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -416,10 +415,6 @@
     <ProjectReference Include="..\LibraryMVC.DataAccess.SQL\LibraryMVC.DataAccess.SQL.csproj">
       <Project>{cd317c58-c34a-424a-aba2-66a0b594ac15}</Project>
       <Name>LibraryMVC.DataAccess.SQL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LibraryMVC.Services\LibraryMVC.Services.csproj">
-      <Project>{e4ab1036-f17b-4028-bf61-f3c358744a2a}</Project>
-      <Name>LibraryMVC.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace LibraryMVC.Core.Models
 {
     public class BookGenre : BaseEntity
     {
-        //[DisplayName("Genre Name")]
+        [DisplayName("Genre Name")]
         public String Genre { get; set; }
 
     }

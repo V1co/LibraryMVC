@@ -7,13 +7,13 @@ namespace LibraryMVC.DataAccess.SQL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ChangeOfRecommend : IMigrationMetadata
+    public sealed partial class changes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeOfRecommend));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(changes));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009101217269_ChangeOfRecommend"; }
+            get { return "202009120200293_changes"; }
         }
         
         string IMigrationMetadata.Source

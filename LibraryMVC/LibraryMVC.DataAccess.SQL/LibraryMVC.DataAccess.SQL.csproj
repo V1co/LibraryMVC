@@ -49,13 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\202009101217269_ChangeOfRecommend.cs" />
-    <Compile Include="Migrations\202009101217269_ChangeOfRecommend.Designer.cs">
-      <DependentUpon>202009101217269_ChangeOfRecommend.cs</DependentUpon>
+    <Compile Include="Migrations\202009120115139_new.cs" />
+    <Compile Include="Migrations\202009120115139_new.Designer.cs">
+      <DependentUpon>202009120115139_new.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009101235066_NumberOfBorrows.cs" />
-    <Compile Include="Migrations\202009101235066_NumberOfBorrows.Designer.cs">
-      <DependentUpon>202009101235066_NumberOfBorrows.cs</DependentUpon>
+    <Compile Include="Migrations\202009120200293_changes.cs" />
+    <Compile Include="Migrations\202009120200293_changes.Designer.cs">
+      <DependentUpon>202009120200293_changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -194,11 +194,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009101217269_ChangeOfRecommend.resx">
-      <DependentUpon>202009101217269_ChangeOfRecommend.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009120115139_new.resx">
+      <DependentUpon>202009120115139_new.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009101235066_NumberOfBorrows.resx">
-      <DependentUpon>202009101235066_NumberOfBorrows.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009120200293_changes.resx">
+      <DependentUpon>202009120200293_changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

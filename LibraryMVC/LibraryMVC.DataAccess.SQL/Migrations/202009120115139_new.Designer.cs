@@ -7,13 +7,13 @@ namespace LibraryMVC.DataAccess.SQL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class NumberOfBorrows : IMigrationMetadata
+    public sealed partial class _new : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NumberOfBorrows));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_new));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009101235066_NumberOfBorrows"; }
+            get { return "202009120115139_new"; }
         }
         
         string IMigrationMetadata.Source
