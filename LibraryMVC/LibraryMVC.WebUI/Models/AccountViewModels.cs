@@ -84,7 +84,7 @@ namespace LibraryMVC.WebUI.Models
         [Display(Name = "First Name")]
         [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in First Name field")]
         public string FirstName { get; set; }
-        
+
         [Required]
         [Display(Name = "Last Name")]
         [RegularExpression(@"[a-zA-Z]{2,30}", ErrorMessage = "Numbers and special characters cannot be used in Last Name field")]

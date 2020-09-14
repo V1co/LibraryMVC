@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <h4 style="margin-top: 30px; text-align: center">Searching results for: <br/><strong>"@ViewBag.SearchTerm"</strong></h4>
+<h4 style="margin-top: 30px; text-align: center">Searching results for: <br /><strong>"@ViewBag.SearchTerm"</strong></h4>
 <hr style="max-width:500px;" />
 <div class="container" style="padding-bottom:60px; display: flex; margin: 0px; font-size: 20px; padding-top: 10px; max-width:100%;">
     <div class="row" style="width: 100%; justify-content: center; margin-left: 0px">
@@ -14,28 +14,31 @@
 
         @if (Model.Count() == 0)
         {
-        <h3 style="margin-top: 30px; color: crimson; text-align: center">Could not find any book or writer with searched name. Type different name or title</h3>
+            <h3 style="margin-top: 30px; color: crimson; text-align: center">Could not find any book or writer with searched name. Type different name or title</h3>
         }
         else
         {
             foreach (var item in Model)
             {
-        <div class="col-12 col-md-6 col-lg-6 col-xl-3 align-items-center" style="margin-top: 10px; margin-bottom: 10px;">
-            <div class="col-md-12 d-flex justify-content-center">
-                <img src="~/Content/BookImages/@item.Image" class="img-thumbnail" style="height: 400px; width: 250px;" />
-            </div>
-            <div class="col-md-12 text-center">
-                <strong>@Html.ActionLink(item.Title, "Details", "Home", new { id = item.Id }, null)</strong>
-            </div>
-            <div class="col-md-12 text-center">
-                @item.WriterFirstName
-            </div>
-            <div class="col-md-12 text-center">
-                @item.WriterLastName
-            </div>
-        </div>
+                <div class="col-12 col-md-6 col-lg-6 col-xl-3 align-items-center" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <img src="~/Content/BookImages/@item.Image" class="img-thumbnail" style="height: 400px; width: 250px;" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <strong>@Html.ActionLink(item.Title, "Details", "Home", new { id = item.Id }, null)</strong>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        @item.WriterFirstName
+                    </div>
+                    <div class="col-md-12 text-center">
+                        @item.WriterLastName
+                    </div>
+                </div>
             }
         }
     </div>
 </div>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

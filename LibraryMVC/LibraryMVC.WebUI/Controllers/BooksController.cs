@@ -1,11 +1,8 @@
 ﻿using LibraryMVC.Core.Contracts;
 using LibraryMVC.Core.Models;
 using LibraryMVC.Core.ViewModels;
-using LibraryMVC.DataAccess.InMemory;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace LibraryMVC.WebUI.Controllers
@@ -24,7 +21,8 @@ namespace LibraryMVC.WebUI.Controllers
             bookGenres = BookGenres;
         }
 
-        public ActionResult All(string sorting) {
+        public ActionResult All(string sorting)
+        {
             IEnumerable<Book> books = context.Collection().ToList();
 
             switch (sorting)

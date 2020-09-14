@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryMVC.Core.Models
 {
-    public class Customer: BaseEntity
+    public class Customer : BaseEntity
     {
         [DisplayName("First Name")]
         public string FirstName { get; set; }
@@ -22,7 +18,8 @@ namespace LibraryMVC.Core.Models
         [DisplayName("Post Code")]
         public string PostCode { get; set; }
         public virtual ICollection<CustomerToBook> CustomersToBooks { get; set; }
-        public Customer() {
+        public Customer()
+        {
         }
     }
 }

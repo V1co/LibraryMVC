@@ -1,11 +1,7 @@
 ﻿using LibraryMVC.Core.Contracts;
 using LibraryMVC.Core.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryMVC.DataAccess.SQL
 {
@@ -14,10 +10,11 @@ namespace LibraryMVC.DataAccess.SQL
         internal DataContext context;
         internal DbSet<T> dbSet;
 
-        public SQLRepository(DataContext context) {
+        public SQLRepository(DataContext context)
+        {
             this.context = context;
             this.dbSet = context.Set<T>();
-            }
+        }
 
         public IQueryable<T> Collection()
         {

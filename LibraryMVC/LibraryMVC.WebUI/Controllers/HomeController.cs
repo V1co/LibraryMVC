@@ -1,18 +1,12 @@
 ﻿using LibraryMVC.Core.Contracts;
 using LibraryMVC.Core.Models;
 using LibraryMVC.Core.ViewModels;
+using LibraryMVC.DataAccess.SQL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using LibraryMVC.WebUI.Models;
-using LibraryMVC.DataAccess.SQL;
 using System.Net;
+using System.Web.Mvc;
 
 namespace LibraryMVC.WebUI.Controllers
 {
@@ -87,13 +81,6 @@ namespace LibraryMVC.WebUI.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public ActionResult Search(string searching)
         {
             IEnumerable<Book> bookTitles = context.Collection().ToList();
@@ -112,7 +99,7 @@ namespace LibraryMVC.WebUI.Controllers
             ViewBag.SearchTerm = searching;
             var model = new List<Book>();
 
-            foreach(var item in bookTitles)
+            foreach (var item in bookTitles)
             {
                 model.Add(item);
             }

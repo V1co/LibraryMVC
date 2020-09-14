@@ -1,14 +1,11 @@
-﻿using System;
+﻿using LibraryMVC.Core.Contracts;
+using LibraryMVC.Core.Models;
+using LibraryMVC.Core.ViewModels;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using LibraryMVC.Core;
-using LibraryMVC.Core.Contracts;
-using LibraryMVC.Core.Models;
-using LibraryMVC.Core.ViewModels;
-using LibraryMVC.DataAccess.InMemory;
 
 namespace LibraryMVC.WebUI.Controllers
 {
@@ -16,7 +13,7 @@ namespace LibraryMVC.WebUI.Controllers
     public class BookManagerController : Controller
     {
         // GET: BookManager
-        
+
         IRepository<Book> context;
         IRepository<BookFormat> bookFormats;
         IRepository<BookGenre> bookGenres;
@@ -38,8 +35,8 @@ namespace LibraryMVC.WebUI.Controllers
             BookManagerViewModel viewModel = new BookManagerViewModel();
             viewModel.Book = new Book();
             viewModel.Formats = bookFormats.Collection();
-            viewModel.Genres = bookGenres.Collection(); 
-            
+            viewModel.Genres = bookGenres.Collection();
+
             return View(viewModel);
         }
 
@@ -119,7 +116,7 @@ namespace LibraryMVC.WebUI.Controllers
                 return RedirectToAction("Index");
             }
         }
-        
+
         public ActionResult Delete(string Id)
         {
             Book bookToDelete = context.Find(Id);

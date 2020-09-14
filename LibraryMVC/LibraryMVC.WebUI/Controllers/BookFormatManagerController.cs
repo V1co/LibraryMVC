@@ -1,10 +1,7 @@
 ﻿using LibraryMVC.Core.Contracts;
 using LibraryMVC.Core.Models;
-using LibraryMVC.DataAccess.InMemory;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace LibraryMVC.WebUI.Controllers

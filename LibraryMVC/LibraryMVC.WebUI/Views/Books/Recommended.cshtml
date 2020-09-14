@@ -1,4 +1,5 @@
 ﻿@model LibraryMVC.Core.ViewModels.BookListViewModel
+
 @{
     ViewBag.Title = "Recommended";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,7 +12,7 @@
         @{
             List<LibraryMVC.Core.Models.Book> books = Model.Books.OrderByDescending(b => b.NumberOfBorrows).ToList();
 
-            foreach(var book in books)
+            foreach (var book in books)
             {
                 <div class="col-12 col-md-6 col-lg-6 col-xl-3 align-items-center" style="margin-top: 10px; margin-bottom: 10px;">
                     <div class="col-md-12 d-flex justify-content-center">
@@ -33,31 +34,6 @@
     </div>
 </div>
 
-@*<div class="col-md-3 col-lg-3" style="margin-left: 60px">
-    <h3>Recommended:</h3>
-    <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            @{
-                var second = true;
-                Random random = new Random();
-                HashSet<int> books = new HashSet<int>();
-            }
-            @while (books.Count() < 5)
-            {
-                int randomIndex = random.Next(Model.Books.Count());
-                books.Add(randomIndex);
-            }
-            @foreach (var item in Model.Books)
-            {
-                <div class="carousel-item @(second ? Html.Raw("active") : Html.Raw(""))">
-                    <div class="row">
-                        <div class="col-sm">
-                            <img class="d-block w-100" src="~/Content/BookImages/@item.Image" style=" width: 200px; height: 500px;" alt="@item.Title">
-                            <strong>@Html.ActionLink(@item.Title, "Details", new { Id = item.Id })</strong>
-                        </div>
-                    </div>
-                </div>
-                second = false;
-            }
-        </div>*@
-
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

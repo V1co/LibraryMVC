@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using LibraryMVC.Core.Models;
+﻿using LibraryMVC.Core.Models;
 using LibraryMVC.Core.ViewModels;
 using LibraryMVC.DataAccess.SQL;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Net;
+using System.Web.Mvc;
 
 namespace LibraryMVC.WebUI.Controllers
 {
@@ -80,8 +77,8 @@ namespace LibraryMVC.WebUI.Controllers
                               b.Id,
                               b.Title,
                               Borrowed = ((from cb in db.CustomersToBooks
-                                          where (cb.CustomerId == id) & (cb.BookId == b.Id)
-                                          select cb).Count() > 0)
+                                           where (cb.CustomerId == id) & (cb.BookId == b.Id)
+                                           select cb).Count() > 0)
                           };
             var CustomersViewModel = new CustomersViewModel();
 

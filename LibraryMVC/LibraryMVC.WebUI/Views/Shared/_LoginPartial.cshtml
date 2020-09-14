@@ -17,8 +17,6 @@
 }
 else
 {
-    @*<ul class="nav navbar-nav navbar-right">*@
-    <li class="nav-item dropdown">@*<i class="fa fa-user-plus text-white-50" aria-hidden="true"></i>*@ @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link col-12", style = "color: white;" })</li>
-    <li class="nav-item dropdown">@*<i class="fa fa-user text-white-50" aria-hidden="true"></i>*@ @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link", style = "color: white;" })</li>
-    @*</ul>*@
+    <li class="nav-item dropdown">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link col-12", style = "color: white;" })</li>
+    <li class="nav-item dropdown">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link", style = "color: white;" })</li>
 }

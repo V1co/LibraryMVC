@@ -73,6 +73,7 @@
             </dl>
                 
         </div>
+
         <dl class="dl-horizontal col-md-12">
             <dt></dt>
             <dd></dd>
@@ -88,10 +89,11 @@
             <dd style="padding-top: 10px">
                 @Html.ActionLink("Back to List", "Index", "Home", null, new { @class = "btn btn-info" })
             </dd>
-
-
         </dl>
-
     </div>
 
-        <div class="clearfix"></div>
+    <div class="clearfix"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

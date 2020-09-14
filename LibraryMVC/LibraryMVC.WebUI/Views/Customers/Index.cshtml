@@ -5,7 +5,6 @@
 }
 
     <h2 style="margin-top: 30px">Customers Manager</h2>
-    @*<h3 style="color:red; text-align: center">@TempData["Title"]</h3>*@
     <div class="container m-0 m-lg-0 pl-xl-5 pr-xl-5" style="padding-bottom:40px; display: flex; padding-top: 20px; max-width:100%; font-size: 18px;">
         <table class="table">
             <thead class="thead-dark">
@@ -54,3 +53,7 @@
 
         </table>
     </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,7 +1,28 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model LibraryMVC.Core.Models.BookFormat
 
-<p>Use this area to provide additional information.</p>
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container" style="margin-top:30px; padding-bottom:50px;">
+
+        <h3>LibraryMVC is a project created by Rafal Pawlowski to test various possibilities of ASP.NET MVC and Entity Framework as well as it's usage.</h3>
+        <div style="margin-top: 20px;">
+            <h3>Technologies used:</h3>
+            <ul style="list-style-type: circle;">
+                <li>ASP.NET 5 - MVC</li>
+                <li>C#</li>
+                <li>Bootstrap 4</li>
+                <li>JavaScript</li>
+                <li>MS SQL</li>
+                <li>Entity Framework</li>
+                <li>CSS</li>
+                <li>HTML 5</li>
+            </ul>
+        </div>
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
